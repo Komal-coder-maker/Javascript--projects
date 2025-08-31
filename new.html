@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input to Object</title>
+</head>
+<body>
+    <input type="text"  placeholder="Enter Name:" id="txtName"> <br>
+    <input type="text"  placeholder="Enter Phone:" id="txtPhone"> <br>
+    <input type="text"  placeholder="Enter Address:" id="txtAddress"> <br><br>
+
+    <button onclick="collectData()">Submit</button>
+
+    <script>
+        function collectData() {
+            var obj = {
+                Name: document.getElementById("txtName").value,
+                Phone: document.getElementById("txtPhone").value,
+                Address: document.getElementById("txtAddress").value
+            };
+
+    
+            console.log(obj);
+        }
+    </script>
+</body>
+</html>
