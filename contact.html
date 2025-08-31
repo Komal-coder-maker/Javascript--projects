@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .contact {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>📱 Contact List App</h2>
+
+    <div>
+        Name: <input type="text" id="nameInput"><br>
+        Phone: <input type="text" id="phoneInput"><br>
+        Email: <input type="email" id="emailInput"><br>
+        <button onclick="addContact()">Add Contact</button>
+    </div>
+
+    <div id="contactList"></div>
+
+    <script>
+        function addContact() {
+            var name = document.getElementById("nameInput").value;
+            var phone = document.getElementById("phoneInput").value;
+            var email = document.getElementById("emailInput").value;
+
+            if (!name || !phone || !email) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            var contactDiv = document.createElement("div");
+            contactDiv.className = "contact";
+
+            var del=document.createElement("button")
+            del.innerHTML="Delete"
+            
+
+            // Simple string concatenation (without backticks)
+            contactDiv.innerHTML = name + " - " + phone + " - " + email 
+                
+
+            document.getElementById("contactList").appendChild(contactDiv);
+            contactDiv.appendChild(del)
+
+            // Clear inputs after adding
+            document.getElementById("nameInput").value = "";
+            document.getElementById("phoneInput").value = "";
+            document.getElementById("emailInput").value = "";
+        }
+    </script>
+
+</body>
+
+</html>

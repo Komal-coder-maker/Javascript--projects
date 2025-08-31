@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Reminder</title>
+  <style>
+    body{
+      background-color: pink;
+    }
+    h2{
+      text-align: center;
+    }
+    div{
+    
+      text-align: center;
+    }
+    button
+    {
+      color: white;
+      background-color: black;
+      margin-top: 20px;
+    }
+    input{
+      margin-top: 10px;
+      margin-left: 0px;
+      color: white;
+      background-color: black;
+    }
+    h1{
+      text-align: center;
+    }
+  </style>
+</head>
+<body id="bdy">
+  <h2>🎂 Birthday Reminder</h2>
+
+   <div>
+  <!-- Name and Date Input -->
+  Name:   <input type="text" id="nameInput" placeholder="Enter name"><br>
+  Birthday: <input type="date" id="dateInput"><br>
+
+  <!-- Button to Add Birthday -->
+  <button onclick="addBirthday()">Add Birthday</button>
+
+  <h3>Upcoming Birthdays:</h3>
+    <!-- Changed to <div> -->
+    </div>
+
+  <script>
+    // Function to add birthday
+    function addBirthday() {
+      var name = document.getElementById("nameInput").value;
+      var date = document.getElementById("dateInput").value;
+
+      if(name === "" || date === "") {
+        alert("Please enter both name and date!");
+        return;
+      }
+
+      // Create new h1 element
+      var birthdayHeader = document.createElement("h1");
+      birthdayHeader.textContent = name + "'s Birthday: " + date;
+
+      // Add to the birthday list (in <div>)
+      document.getElementById("bdy").appendChild(birthdayHeader);
+
+      // Clear inputs
+      document.getElementById("nameInput").value = "";
+      document.getElementById("dateInput").value = "";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            span{
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body id="bdy">
+        
+        
+        <script>
+        //    var arr=  [{
+        //         "Pname":"Monitor",
+        //         "Color":"Red",
+        //         "Price":"2080",
+        //         "Company":"Dell",
+        //         "Path":"pic/monitor.jpg"
+        //     },{
+        //         "Pname":"Keyboard",
+        //         "Color":"Black",
+        //         "Price":"290",
+        //         "Company":"Hp",
+        //         "Path":"pic/keyboard.jpg"
+        //     },{
+        //         "Pname":"Printer",
+        //         "Color":"White",
+        //         "Price":"12000",
+        //         "Company":"Cyan",
+        //         "Path":"pic/printer.jpg"
+        //     },{
+        //         "Pname":"Mouse",
+        //         "Color":"Black",
+        //         "Price":"560",
+        //         "Company":"Dell",
+        //         "Path":"pic/mouse.jpg"
+        //     },{
+        //         "Pname":"Laptop",
+        //         "Color":"Grey",
+        //         "Price":"54000",
+        //         "Company":"Asus",
+        //         "Path":"pic/laptop.jpg"
+        //     },{
+        //         "Pname":"Laptop",
+        //         "Color":"Red",
+        //         "Price":"45900",
+        //         "Company":"Samsung",
+        //         "Path":"pic/laptop.jpg"
+        //     }]
+
+        //   arr.forEach(function(object){
+        //     var box= document.createElement("div")
+        //     box.style.height="300px"
+        //     box.style.width="200px"
+        //     box.style.border="1px solid black"
+        //     box.style.float="left"
+        //     box.style.margin="10px"
+
+        //     image1=document.createElement("img")
+        //     image1.style.height="60%"
+        //     image1.style.width="100%"
+        //     image1.src=object.Path
+
+        //     var spanName=document.createElement("span")
+        //     spanName.innerHTML=object.Pname
+
+        //     var spanPrice=document.createElement("span")
+        //     spanPrice.innerHTML="Rs."+object.Price
+
+        //     box.append(image1)
+        //     box.append(spanName)
+        //     box.append(spanPrice)
+
+        //     document.getElementById("bdy").append(box)
+        //   })
+
+         
+        
+        //    newArr= arr.filter(function(object){
+        //         return object.Price<2000
+        //     })
+        //     console.log(newArr)
+        //    var newArr= arr.filter(function(object){
+        //         return object.Company=="Dell"
+        //     })
+        //     console.log(newArr)
+
+        // var newArr= arr.filter(function(object){
+        //         return object.Color=="Black"
+        //     })
+        //     console.log(newArr)
+            
+            //  arr.forEach(function(object){
+            //     console.log(object.Pname,object)
+            //  })
+
+        //    var newArr= arr.map(function(object){
+        //             return object.Price
+        //     })  
+        //     console.log(newArr)
+
+        var arr=[11,22,33,44,55,66,77,88]
+       var newArr= arr.map(function(item){
+            return item*2
+
+           
+        })
+
+        let dataVari = newArr.map(function(data){
+            return data/5
+        })
+        console.log(dataVari)
+        
+        newArr.forEach(function(data1){
+            console.log(data1*2)
+        })
+       
+         
+
+        
+    // var newArr= arr.filter(function(item){
+    //         return item%2==1
+    //     })
+    //     console.log(newArr)
+        </script>
+    </body>
+    </html>

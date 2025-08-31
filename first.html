@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="num" placeholder="Enter a number">
+    <button onclick="set()">click</button>
+    <script>
+        function set() {
+            let x = parseInt(document.getElementById("num").value);
+            console.log(x);  // यह देखिए कि x क्या है
+
+            // Outer if: Checking if the number is greater than 10
+            if (x > 10) {
+                console.log("hii");
+            } else {
+                // First else if: Checking if the number is negative
+                if (x < 0) {
+                    console.log("Negative number");
+                } 
+                // Second else if: Checking if the number is zero
+                else if (x === 0) {
+                    console.log("Zero");
+                } 
+                // Third else if: Checking if the number is positive but less than 10
+                else if (x > 0 && x < 10) {
+                    console.log("Positive but less than 10");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Pet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .pet-image {
+      width: 200px;
+      height: 200px;
+    }
+    .status {
+      margin: 10px;
+    }
+    .button {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Virtual Pet</h1>
+  <img src="https://via.placeholder.com/200" alt="Virtual Pet" class="pet-image" id="pet">
+  <div class="status" id="happiness">Happiness: 50</div>
+  <div class="status" id="hunger">Hunger: 50</div>
+  <div class="status" id="energy">Energy: 50</div>
+
+  <button class="button" onclick="feed()">Feed Pet</button>
+  <button class="button" onclick="play()">Play with Pet</button>
+  <button class="button" onclick="sleep()">Put Pet to Sleep</button>
+
+  <script>
+    let happiness = 50;
+    let hunger = 50;
+    let energy = 50;
+
+    // Update the status display
+    function updateStatus() {
+      document.getElementById('happiness').textContent = `Happiness: ${happiness}`;
+      document.getElementById('hunger').textContent = `Hunger: ${hunger}`;
+      document.getElementById('energy').textContent = `Energy: ${energy}`;
+    }
+
+    // Feed the pet
+    function feed() {
+      hunger = Math.max(0, hunger - 10);
+      happiness = Math.min(100, happiness + 5);
+      updateStatus();
+    }
+
+    // Play with the pet
+    function play() {
+      if (energy > 20) {
+        happiness = Math.min(100, happiness + 10);
+        energy = Math.max(0, energy - 20);
+      } else {
+        alert('Pet is too tired to play! Put it to sleep first.');
+      }
+      updateStatus();
+    }
+
+    // Put the pet to sleep
+    function sleep() {
+      energy = Math.min(100, energy + 30);
+      hunger = Math.min(100, hunger + 10);
+      updateStatus();
+    }
+
+    // Decrease happiness and energy over time
+    setInterval(() => {
+      hunger = Math.min(100, hunger + 5);
+      happiness = Math.max(0, happiness - 2);
+      energy = Math.max(0, energy - 5);
+      updateStatus();
+    }, 5000); // Update every 5 seconds
+  </script>
+</body>
+</html>
