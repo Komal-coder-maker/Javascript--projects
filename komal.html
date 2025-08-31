@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        th,
+        td {
+            text-align: center;
+        }
+
+        th {
+            background-color: slateblue;
+            color: aliceblue;
+        }
+        #title
+        {
+            text-align: center;
+        }
+        span{
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        button
+        {
+            margin: 10px;
+        }
+        .passion
+        {
+            color: aliceblue;
+            background-color: red;
+            font-size: 20px;
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Registration Form.....</h1>
+        <hr>
+        Enter Name:
+        <input class="form-control" id="txtName" type="text"> <br>
+        Enter Phone:
+        <input class="form-control" id="txtPhone" type="text"> <br>
+        Enter Address:
+        <input class="form-control" id="txtAddress" type="text"> <br>
+        <button class="btn btn-success" onclick="save()">Save</button>
+        <button class="btn btn-danger" onclick="mdel()">Delete</button>
+        <button class="btn btn-danger" onclick="mdel()">Update</button>
+        <br>
+
+<div id="title">
+    <span>Total Record:</span> <span id="count"></span>
+</div>
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <th>
+                    <input id="chk" onclick="setReset()" type="checkbox">
+                    Select
+                </th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Operation</th>
+            </thead>
+            <tbody id="bdy">
+
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+
+        function mdel() {
+            var rows = document.getElementById("bdy").getElementsByTagName("tr")
+            i = 0
+            
+            while (i <= rows.length - 1) {
+                if (rows[i].childNodes[0].childNodes[0].checked == true) {
+                    // rows[i].remove()
+                    rows[i].style.display = "none"
+                }
+                i = i + 1
+            }
+            // var rows = document.getElementById("bdy").getElementsByTagName("tr")
+            // console.log(rows)
+            // if(rows.length==0)
+            //         document.getElementById("chk").checked=false
+        }
+        function setReset() {
+            if (document.getElementById("chk").checked == true) {
+                var rows = document.getElementById("bdy").getElementsByTagName("tr")
+                i = 0
+                while (i <= rows.length - 1) {
+                    rows[i].childNodes[0].childNodes[0].checked = true
+                    i = i + 1
+                }
+            }
+            else {
+                var rows = document.getElementById("bdy").getElementsByTagName("tr")
+                i = 0
+                while (i <= rows.length - 1) {
+                    rows[i].childNodes[0].childNodes[0].checked = false
+                    i = i + 1
+                }
+            }
+        }
+        function save() {
+            var name = document.getElementById("txtName").value
+            var phone = document.getElementById("txtPhone").value
+            var address = document.getElementById("txtAddress").value
+            // if (phone.length > 10 || phone.length < 10) {
+            //     alert("plz enter 10 digit number:")
+            //     return
+            // }
+
+            // if (name == "" || phone == "" || address == "") {
+            //     alert("plz fill the value")
+            //     return
+            // }
+            // if (isNaN(phone)) {
+            //     alert("Plz enter in correct format")
+            //     return
+            // }
+            var row = document.createElement("tr")
+
+            var cell = document.createElement("td")
+            var cell1 = document.createElement("td")
+            var cell2 = document.createElement("td")
+            var cell3 = document.createElement("td")
+            var cell4 = document.createElement("td")
+
+            var inpCheck = document.createElement("input")
+            inpCheck.type = "checkbox"
+
+            cell.append(inpCheck)
+
+            cell1.innerHTML = name
+            cell2.innerHTML = phone
+            cell3.innerHTML = address
+
+            var btnDelete = document.createElement("button")
+            btnDelete.innerHTML = "Delete"
+            btnDelete.setAttribute("onclick", "del(this)")
+            btnDelete.setAttribute("class","btn btn-primary")
+            cell4.append(btnDelete)
+            
+            
+            var btnEdit = document.createElement("button")
+            btnEdit.innerHTML = "Edit"
+            btnEdit.setAttribute("onclick", "edit(this)")
+            btnEdit.setAttribute("class","btn btn-danger")
+            cell4.append(btnEdit)
+
+            row.append(cell)
+            row.append(cell1)
+            row.append(cell2)
+            row.append(cell3)
+            row.append(cell4)
+            document.getElementById("bdy").append(row)
+            var rows=document.getElementById("bdy").getElementsByTagName("tr")
+            document.getElementById("count").innerHTML=rows.length
+            reset()
+        }
+         function edit(currentButton)
+         {
+           document.getElementById("txtName").value=  currentButton.parentNode.parentNode.childNodes[1].innerHTML
+           document.getElementById("txtPhone").value=  currentButton.parentNode.parentNode.childNodes[2].innerHTML
+           document.getElementById("txtAddress").value=  currentButton.parentNode.parentNode.childNodes[3].innerHTML
+
+         }
+
+        function reset() {
+            document.getElementById("txtName").value = ""
+            document.getElementById("txtPhone").value = ""
+            document.getElementById("txtAddress").value = ""
+        }
+
+        function del(currentButton) {
+            var td = currentButton.parentNode
+            var row = td.parentNode
+            // row.style.display = "none"
+            row.remove()
+            var rows=document.getElementById("bdy").getElementsByTagName("tr")
+            document.getElementById("count").innerHTML=rows.length
+        }
+    </script>
+</body>
+
+</html>

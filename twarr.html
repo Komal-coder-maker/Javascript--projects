@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="txtName" type="text" placeholder="Enter Name"> <br>
+    <input id="txtPhone" type="text" placeholder="Enter Phone Number"> <br>
+    <button onclick="save()">Save</button>
+    <button onclick="show()">Show</button>
+    <br> <br>
+    <table border="2">
+        <thead>
+            <th>Name</th>
+            <!-- <th>Phone</th> -->
+        </thead>
+        <tbody id="bdy">
+            <!-- Data will be shown here -->
+        </tbody>
+    </table>
+    <script>
+        // Initializing separate arrays for names and phones
+        var names = [];
+        // var phones = [];
+
+        function show() {
+            // Load the data from localStorage
+            names = JSON.parse(localStorage.getItem("names")) 
+            // phones = JSON.parse(localStorage.getItem("phones")) || [];
+
+            document.getElementById("bdy").innerHTML = "";  // Clear the table before showing new data
+
+            // Initialize index variable for while loop
+            var i = 0;
+
+            // Loop through both arrays using while
+            while (i < names.length) {
+                var row = document.createElement("tr");  // Create new row for the table
+
+                var cell1 = document.createElement("td");  // Create first cell for name
+                // var cell2 = document.createElement("td");  // Create second cell for phone
+
+                // Assign values to cells
+                cell1.innerHTML = names[i];  // names[i] -> name
+                // cell2.innerHTML = phones[i];  // phones[i] -> phone
+
+                // Append cells to the row
+                row.append(cell1);
+                // row.append(cell2);
+
+                // Append the row to the table body
+                document.getElementById("bdy").append(row);
+
+                i++;  // Increment to next index
+            }
+        }
+
+        function save() {
+            // Get the name and phone from input fields
+            var name = document.getElementById("txtName").value;
+            // var phone = document.getElementById("txtPhone").value;
+
+            // Load existing data from localStorage
+            names = JSON.parse(localStorage.getItem("names")) || [];  // Default to an empty array if null
+            // phones = JSON.parse(localStorage.getItem("phones")) || [];  // Default to an empty array if null
+
+            // Push name and phone into their respective arrays
+            names.push(name);
+            // phones.push(phone);
+
+            // Save the updated arrays to localStorage
+            localStorage.setItem("names", JSON.stringify(names));
+            // localStorage.setItem("phones", JSON.stringify(phones));
+
+            show();  // Call show function to display the updated table
+
+            // Clear the input fields after saving
+            document.getElementById("txtName").value = "";
+            // document.getElementById("txtPhone").value = "";
+        }
+
+        // Initial call to show() to load data from localStorage when the page is loaded
+        show();
+    </script>
+</body>
+
+</html>

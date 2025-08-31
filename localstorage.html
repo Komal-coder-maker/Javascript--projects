@@ -4,29 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <input type="text" id="txtName" placeholder="enter the name ">
-    <br><br>
+    <input type="text"  id="txt">
+    <br>
     <button onclick="save()">Save</button>
     <br>
-    <button onclick="show()">show</button>
-
+    <button onclick="show()">Show</button>
 </head>
 <body>
-    <script>
-         var arr=[]
-        //  function show(){
-        //     var arr=JSON.parse(localStorage.getItem("first"))
-        //     console.log(arr)
+    <table border=" 1px solid black">
+        <thead>
+            <th>name</th>
+            
+        </thead>
+        <tbody id ="bdy">
 
-        //  }
+        </tbody>
+    </table>
+    <script>
+
+        var arr=[]
+
+        function show(){
+             document.getElementById("bdy").innerHTML=""
+           
+            let x =  JSON.parse(localStorage.getItem("first"))
+            
+            i=0;
+            while(i<=x.length-1){
+
+                var row= document.createElement("tr")
+                var tdata= document.createElement("td")
+                tdata.innerHTML=x[i]
+                row.append(tdata)
+                document.getElementById("bdy").append(row)
+
+                i=i+1
+            }
+        // }
+        }
+       
         function save(){
-            // var arr =  JSON.parse(localStorage.getItem("first"))
-            // if(arr==null){
-            //     arr=[]
-            // }
-            var data= document.getElementById("txtName").value
-            arr.push(data)
-            localStorage.setItem("first",JSON.stringify(arr))
+              var arr = JSON.parse(localStorage.getItem("first"))
+
+              if (arr==null){
+                arr=[]
+              }
+            let data = document.getElementById("txt").value
+             arr.push(data)
+            localStorage.setItem("first" , JSON.stringify(arr))
+             
         }
     </script>
     

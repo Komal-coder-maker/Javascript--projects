@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2px solid black">
+        <thead>
+            <tr> <!-- यह भी जरूरी है -->
+                <th>Name</th>
+                <th>Class</th>
+            </tr>
+        </thead>
+        <tbody id="bdy">
+        </tbody>
+    </table>
+
+    <script>
+        var a = [
+            { name: "komal", class: "mca" },
+            { name: "kiran", class: "mca" }
+        ];
+        
+        // let i = 0;
+        a.forEach(function(iteam) {
+            let row = document.createElement("tr");
+
+            let tdata = document.createElement("td");
+            let tdata1 = document.createElement("td");
+
+            tdata.innerHTML =iteam.name;
+            tdata1.innerHTML =iteam.class;
+
+            row.append(tdata);
+            row.append(tdata1);
+
+            document.getElementById("bdy").append(row);
+
+            i++; // ✅ ये लाइन सबसे ज़रूरी है!
+        })
+    </script>
+</body>
+</html>

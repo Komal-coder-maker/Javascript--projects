@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="txtData" type="text"> <br>
+    <button onclick="save()">Save</button>
+    <button onclick="show()">Show</button>
+    <br> <br>
+    <table border="2">
+        <thead>
+            <th>Name</th>
+        </thead>
+        <tbody id="bdy">
+
+        </tbody>
+    </table>
+    <script>
+
+        var arr = []
+        show()
+        function show() {
+
+           
+            arr = JSON.parse(localStorage.getItem("first"))
+
+             document.getElementById("bdy").innerHTML=""
+             i=0;
+             while(i<=arr.length-1){
+                var row=document.createElement("tr")
+                var cell1=document.createElement("td")
+                cell1.innerHTML=arr[i]
+
+                row.append(cell1)
+                document.getElementById("bdy").append(row)
+
+                i++;
+             }
+            
+        }
+
+        function save() {
+            arr = JSON.parse(localStorage.getItem("first")) // reload
+
+            if (arr == null) {
+                arr = []
+            }
+            var data = document.getElementById("txtData").value
+            arr.push(data)
+            localStorage.setItem("first", JSON.stringify(arr))
+            // show()
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body id="bdy">
+  <select name="" id="sel">
+    <option>red</option>
+    <option>green</option>
+    <option>blue</option>
+    <option>black</option>
+  </select>
+  <button id="btn" onclick="set()">Create </button>
+
+
+  <script>
+    function set() {
+
+      let color = document.getElementById("sel").value
+
+      let box = document.createElement("div")
+      box.style.float="left"
+
+      
+      
+      box.style.height = "250px"
+      box.style.width = "200px"
+      box.style.margin = "30px"
+      //  x.style.float="right"
+      // x.style.float="left"
+      box.style.border = "1px solid black"
+      document.getElementById("bdy").append(box)
+
+
+      let innerdiv = document.createElement("div")
+      innerdiv.style.height = "30px"
+      innerdiv.style.width = "100%px"
+      //  innerdiv.style.margin="30px"
+      //  x.style.float="right"
+      // x.style.float="left"
+      innerdiv.style.border = "1px solid black"
+      innerdiv.style.backgroundColor = color
+      box.append(innerdiv)
+
+
+      let txt = document.createElement("textarea")
+      txt.style.height = "170px"
+      txt.style.width = "98%"
+      // txt.style.margin="5px"
+      //  txt.style.height="100px"
+      box.append(txt)
+
+
+      let image1 = document.createElement("img")
+      image1.src = "download (1).png"
+      image1.style.height = "30px"
+      //  image1.style.backgroundColor="black"
+      innerdiv.append(image1)
+      image1.setAttribute("onclick", "set()")
+
+
+      let image2 = document.createElement("img")
+      image2.src = "download.png"
+      image2.style.height = "30px"
+      image2.style.float = "right"
+      // image2.style.marginLeft="80px"
+
+      //  image1.style.backgroundColor="black"
+      innerdiv.append(image2)
+      image2.setAttribute("onclick", "del(this)")
+
+
+      let btnSubmit = document.createElement("button")
+      btnSubmit.innerHTML = "submit"
+      btnSubmit.style.height = "30px"
+      btnSubmit.style.width = "30%"
+      btnSubmit.style.marginTop = "0px"
+      btnSubmit.style.marginLeft = "10px"
+      // btnSubmit.style.backgroundColor=""
+      box.append(btnSubmit)
+      btnSubmit.setAttribute("onclick", "sub(this)")
+
+
+
+      let btnSubmit1 = document.createElement("button")
+      btnSubmit1.innerHTML = "reset"
+      btnSubmit1.style.height = "30px"
+      btnSubmit1.style.width = "30%"
+      btnSubmit1.style.marginTop = "0px"
+      btnSubmit1.style.marginLeft = "10px"
+      // btnSubmit.style.backgroundColor=""
+      box.append(btnSubmit1)
+      btnSubmit1.setAttribute("onclick", "add(this)")
+
+
+
+    }
+
+    function del(current) {
+      current.parentNode.parentNode.style.display = "none"
+    }
+
+    // function sub(submit){
+    // let y = submit.parentNode
+    // let x = y.querySelector("textarea")
+    // x.disabled=true
+
+
+    // }
+    function sub(curr) {
+      let x = curr.parentNode
+      let y = x.querySelector("textarea")
+      y.disabled = true
+    }
+
+
+    function add(currr) {
+      let a = currr.parentNode
+      let b = a.querySelector("textarea")
+      b.disabled = false
+    }
+  </script>
+</body>
+
+</html>

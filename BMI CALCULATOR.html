@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{
+            background-color: black;
+        }
+        #row
+        {
+            height: 400px;
+            width: 40%;
+            background-color: darkcyan;
+            text-align: center;
+            position: absolute;
+            top:100px;
+            left: 400px;
+        }
+        h2{
+            color:white
+        }
+    </style>
+</head>
+<body>
+    <div id="row">
+        <h1>
+            BMI Calculator...   </h1>
+            <br>
+            <input id= "w">
+            <br><br>
+            <input id= "h">
+            <br><br>
+            <button onclick="set()">calculate BMI </button>
+            <br><br>
+            <h2 id = "result"></h2>
+
+            <script>
+                function set(){
+                    let x = document.getElementById("w").value
+                    let y = document.getElementById("h").value
+                    if(x=="" || y=="" ||x<=0 || y<=0)
+                    document.getElementById("result").innerHTML="enter the correct value of weigth and heeigth"
+                else{
+                    document.getElementById("result").innerHTML=x/(y*y)
+                }
+
+                }
+            </script>
+    
+</body>
+</html>

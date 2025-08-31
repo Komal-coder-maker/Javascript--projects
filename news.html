@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    Name: <input type="text" id="txt">
+    <br>
+    Phone: <input type="text" id="phone">
+    <br>
+    <button onclick="save()">Save</button>
+    <br>
+    <button onclick="show()">Show</button>
+</head>
+<body>
+    <table border="1px solid black">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody id="bdy">
+        </tbody>
+    </table>
+
+    <script>
+        function save() {
+            let name = document.getElementById("txt").value
+            let phone = document.getElementById("phone").value
+
+            if (name.trim() === "" || phone.trim() === "") {
+                alert("Please enter both name and phone");
+                return;
+            }
+
+            var arr = JSON.parse(localStorage.getItem("first"))
+            if (arr == null) {
+                arr = []
+            }
+
+            arr.push([name, phone]) // अब data एक array में दो values के साथ होगा
+            localStorage.setItem("first", JSON.stringify(arr))
+        }
+
+        function show() {
+            document.getElementById("bdy").innerHTML = ""
+            let x = JSON.parse(localStorage.getItem("first"))
+
+            if (x != null) {
+                i = 0
+                while (i <= x.length - 1) {
+                    var row = document.createElement("tr")
+
+                    var nameTd = document.createElement("td")
+                    nameTd.innerHTML = x[i][0] // name
+
+                    var phoneTd = document.createElement("td")
+                    phoneTd.innerHTML = x[i][1] // phone
+
+                    row.append(nameTd)
+                    row.append(phoneTd)
+
+                    document.getElementById("bdy").append(row)
+                    i = i + 1
+                }
+            }
+        }
+    </script>
+</body>
+</html>

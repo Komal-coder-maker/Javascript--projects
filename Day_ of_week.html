@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: darkolivegreen;
+        }
+        #row{
+            height: 400px;
+            width: 40%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 100px;
+            left: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="row">
+        <h1>Day Of A Week</h1><br>
+        <input type="number" placeholder="Enter The Number 1-7" id="num"><br><br>
+        <button onclick="set()">Check Day</button>
+        <h2 id="result"></h2>
+    </div>
+
+    <script>
+            function set(){
+                let x = document.getElementById("num").value
+                if(x==1){
+                    result="monday"
+                }
+                 else if(x==2){
+                    result="tuesday"
+                }
+                else  if(x==3){
+                    result="wednesday"
+                }
+                else  if(x==4){
+                    result="thrusday"
+                }
+                else if(x==5){
+                    result="friday"
+                }
+                 else if(x==6){
+                    result="saturday"
+                }
+               else  if(x==7){
+                    result="sunady"
+                }
+                else{
+                    result="invalid! input"
+                }
+                document.getElementById("result").innerHTML=result
+               
+            }
+    </script>
+
+    
+</body>
+</html>

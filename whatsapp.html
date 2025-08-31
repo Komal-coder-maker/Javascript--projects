@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+body {
+    background-color: #ece5dd;
+}
+        #row{
+            height: 500px;
+            width: 25%;
+            background-color: white;
+            position: absolute;
+            left: 500px;
+            top: 50px;
+            border-radius: 20px;
+        }
+        input{
+            position: absolute;
+            left: 20px;
+            border: none;
+            width: 50%;
+            height: 30px;
+            top: 10px;
+            border-radius: 20px;
+            background-color: #f0f0f0;;
+            padding-left: 20px;
+        }
+        button{
+            position: absolute;
+            left: 200px;
+            border: none;
+            /* width: 60%; */
+            
+            height: 28px;
+            top: 12px;
+            /* border: 2px solid black; */
+            border-radius: 20px;
+            background-color: #25d366;
+
+        }
+        #first{
+               background-color: darkolivegreen;
+               height: 50px;
+               width: 100%;
+               position: absolute;
+               top: 50px;
+        }
+        img{
+            height: 40px;
+      width: 40px;
+      border-radius: 50%; 
+      position: absolute;
+      top: 5px;
+      left: 10px;
+        }
+        h2{
+            position: absolute;
+            left: 80px;
+            bottom: -5px;
+        }
+        #second{
+            background-color: darkolivegreen;
+               height: 50px;
+               width: 100%;
+               position: absolute;
+               top: 120px;
+        }
+        #third{
+            background-color: darkolivegreen;
+               height: 50px;
+               width: 100%;
+               position: absolute;
+               top: 193px;
+        }
+        #for{
+            background-color: darkolivegreen;
+               height: 50px;
+               width: 100%;
+               position: absolute;
+               top: 270px;
+
+        }
+        #fiv{
+            background-color: darkolivegreen;
+               height: 50px;
+               width: 100%;
+               position: absolute;
+               top: 350px;
+
+        }
+        #six{
+            background-color: darkolivegreen;
+               height: 50px;
+               width: 100%;
+               position: absolute;
+               top: 430px;
+        }
+        #first,#second,#third,#for,#fiv,#six{
+            background-color: #fff;
+            border-bottom:1px solid hsl(0, 0%, 87%)
+        }
+    </style>
+</head>
+<body>
+
+    <div id = "row">
+        <input type="text"  placeholder="Search..." onkeyup="searchContact()"> <button>Search Here</button>
+
+        <div id = "first">
+            <img src="download15.jpg" alt="">
+            <h2> Komal</h2>
+        </div>
+        <div id ="second">
+            <img src="download16.jpg" alt="">
+            <h2> Kirti</h2>
+        </div>
+        <div id = "third">
+            <img src="download17.jpg" alt="">
+             <h2>Kiran</h2>
+        </div>
+        <div id = "for">
+            <img src="download (2).jpg" alt="">
+            <h2>Priya</h2>
+          </div>
+          <div id = "fiv">
+            <img src="download17.jpg" alt="">
+            <h2>Monika</h2>
+          </div>
+          <div id = "six">
+            <img src="download16.jpg" alt="">
+            <h2>Riya</h2>
+          </div>
+    </div>
+    
+
+
+    <script>
+        function searchContact() {
+          let input = document.querySelector('input').value.toLowerCase();
+          let names = document.querySelectorAll('h2');
+          let image = document.querySelectorAll("img")
+          let i = 0;
+        
+          while (i < names.length) {
+            let text = names[i].innerText.toLowerCase();
+            if (text.includes(input)) {
+              names[i].style.display = 'block';
+              image[i].style.display="block"
+
+            } else {
+              names[i].style.display = 'none';
+              image[i].style.display="none"
+            }
+            i++;
+          }
+        }
+        </script>
+        
+</body>
+</html>

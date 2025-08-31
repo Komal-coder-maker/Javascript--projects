@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt">
+    <!-- <input type="text " id="phn"> -->
+    <br>
+    <button onclick="save()">Save</button>
+    <button onclick="show()">Show</button>
+
+    <table border="1px solid  black">
+        <thead>
+            <th>Name</th>
+            <!-- <th>Phone</th> -->
+        </thead>
+        <tbody id="bdy">
+
+        </tbody>
+    </table>
+
+
+    <script>
+        var arr=[]
+
+
+
+function save(){
+
+
+    var arr=JSON.parse(localStorage.getItem("first"))
+
+    if(arr==null){
+        arr=[]
+    }
+let x = document.getElementById("txt").value
+
+
+arr.push(x)
+
+localStorage.setItem("first",JSON.stringify(arr))
+
+
+}
+
+
+
+
+function show(){
+
+    document.getElementById("bdy").innerHTML=""
+   var z = JSON.parse(localStorage.getItem("first"))
+  let  i=0
+   while(i<=z.length-1){
+    var a= document.createElement("tr")
+    var b= document.createElement("td")
+    b.innerHTML=z[i]
+     a.append(b)
+     document.getElementById("bdy").append(a)
+
+     i=i+1
+   }
+}
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          body{
+            background-color: darkolivegreen;
+        }
+        #row{
+            height: 400px;
+            width: 40%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 100px;
+            left: 400px;}
+    </style>
+</head>
+<body>
+    <div id="row">
+        <h1>Check The Age For Voting</h1><br>
+        <input type="number" placeholder="Enter The Age " id="num"><br><br>
+        <button onclick="set()">Check Age</button>
+        <h2 id="result"></h2>
+    </div>
+    <script>
+        function set(){
+
+            
+            let  x= document.getElementById("num").value
+            if(x>=18){
+                mess="You can vote"
+            }
+            else 
+            {
+                mess="you can not vote"
+            }
+            document.getElementById("result").innerHTML=mess
+        }
+    </script>
+    
+</body>
+</html>

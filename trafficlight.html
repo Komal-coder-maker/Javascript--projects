@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Traffic Light with Button</title>
+  <style>
+    .light {
+      width: 100px;
+      height: 100px;
+      margin: 10px auto;
+      border-radius: 50%;
+      background-color: gray;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="red" class="light"></div>
+<div id="yellow" class="light"></div>
+<div id="green" class="light"></div>
+
+<button onclick="startTraffic()">Start Traffic Light</button>
+
+<script>
+    function startTraffic() {
+    turnRed();
+    setTimeout(turnYellow, 2000);
+    setTimeout(turnGreen, 4000);
+  } 
+  function turnRed() {
+    document.getElementById('red').style.backgroundColor = 'red';
+    document.getElementById('yellow').style.backgroundColor = 'gray';
+    document.getElementById('green').style.backgroundColor = 'gray';
+  }
+
+  function turnYellow() {   
+    document.getElementById('red').style.backgroundColor = 'gray';
+    document.getElementById('yellow').style.backgroundColor = 'yellow';
+    document.getElementById('green').style.backgroundColor = 'gray';
+  }
+
+  function turnGreen() {
+    document.getElementById('red').style.backgroundColor = 'gray';
+    document.getElementById('yellow').style.backgroundColor = 'gray';
+    document.getElementById('green').style.backgroundColor = 'green';
+  }
+
+  
+</script>
+
+</body>
+</html>

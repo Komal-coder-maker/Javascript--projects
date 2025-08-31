@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>नाम और क्लास टेबल</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>नाम और क्लास जोड़ें</h2>
+
+  <label>नाम:</label>
+  <input type="text" id="nameInput">
+  <label>क्लास:</label>
+  <input type="text" id="classInput">
+  <button onclick="addData()">जोड़ें</button>
+
+  <h3>स्टूडेंट्स की लिस्ट</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>नाम</th>
+        <th>क्लास</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- यहां डाटा ऐड होगा -->
+    </tbody>
+  </table>
+
+  <script>
+    function addData() {
+      let name = document.getElementById("nameInput").value;
+      let className = document.getElementById("classInput").value;
+
+      if (name === "" || className === "") {
+        alert("कृपया दोनों फ़ील्ड भरें");
+        return;
+      }
+
+      let tableBody = document.getElementById("tableBody");
+      let newRow = document.createElement("tr");
+
+      let nameCell = document.createElement("td");
+      nameCell.textContent = name;
+
+      let classCell = document.createElement("td");
+      classCell.textContent = className;
+
+      newRow.appendChild(nameCell);
+      newRow.appendChild(classCell);
+      tableBody.appendChild(newRow);
+
+      // इनपुट बॉक्स खाली करें
+      document.getElementById("nameInput").value = "";
+      document.getElementById("classInput").value = "";
+    }
+  </script>
+
+</body>
+</html>

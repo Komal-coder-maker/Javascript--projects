@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        #row
+        {
+            height: 400px;
+            width: 40%;
+            background-color: darkcyan;
+            text-align: center;
+            position: absolute;
+            top:100px;
+            left: 400px;
+        }
+        h2{
+            color:white
+        }
+    </style>
+</head>
+<body>
+    <div id="row">
+            <h1>
+                Bill Calculator...   </h1>
+                <br>
+                <input type="number" id= "num">
+                <br><br>
+                <button onclick="set()">Check The Bill </button>
+                <br><br>
+                <h2 id = "result"></h2>
+
+                <script>
+                    function set(){
+                        let unit = document.getElementById("num").value
+                        
+                        if( unit == ""){
+                            bill="please enter the electricity unit"
+                        }
+                        else if(unit<=50){
+                            bill= unit*3
+                        }
+                        else if(unit<=150){
+                            bill= 50*3+((unit-50)*5);
+                        }
+                        else if ( unit<=250){
+                            bill= 50*3+100*5+((unit-150)*7)
+                        }
+                        else{
+                            bill= bill= 50*3+100*5+100*7+((unit-250)*10)
+                        }
+                        document.getElementById("result").innerHTML=bill.toFixed(2)
+                    }
+                </script>
+    </div>
+    
+</body>
+</html>

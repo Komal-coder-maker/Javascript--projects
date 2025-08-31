@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Contacts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📱 Phone Contact App</h1>
+  
+  <input type="text" id="nameInput" placeholder="Enter name" />
+  <input type="text" id="phoneInput" placeholder="Enter phone number" />
+  <button onclick="addContact()">Add Contact</button>
+  <button onclick="edit()">Edit</button>
+  
+  <table id="contactList">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone Number</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    function addContact() {
+      const name = document.getElementById('nameInput').value;
+      const phone = document.getElementById('phoneInput').value;
+      
+    //   Validate input fields
+      if (name === "" || phone === "") {
+        alert("Please fill in both fields.");
+        return;
+      }
+
+      // Create a new table row (<tr>)
+      const newRow = document.createElement('tr');
+      
+      // Create name cell (<td>) and append to the row
+      const nameCell = document.createElement('td');
+    //   nameCell.textContent = name;
+      newRow.appendChild(nameCell);
+      nameCell.innerHTML=name;
+
+
+      // Create phone cell (<td>) and append to the row
+      const phoneCell = document.createElement('td');
+      phoneCell.textContent = phone;
+      newRow.appendChild(phoneCell);
+      phoneCell.innerHTML=phone
+
+      // Append the new row to the table body
+      document.getElementById("contactList").appendChild(newRow);
+
+      // Clear the input fields
+    //   document.getElementById('nameInput').value = "";
+    //   document.getElementById('phoneInput').value = "";
+
+    clear()
+    }
+     function clear(){
+        document.getElementById("nameInput").value=""
+        document.getElementById("phoneInput").value=""
+    }
+
+   
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="txtName" type="text" placeholder="Enter Name"> <br>
+    <input id="txtPhone" type="text" placeholder="Enter Phone Number"> <br>
+    <button onclick="save()">Save</button>
+    <button onclick="show()">Show</button>
+    <br> <br>
+    <table border="2">
+        <thead>
+            <th>Name</th>
+            <th>Phone</th>
+        </thead>
+        <tbody id="bdy">
+            <!-- Data will be shown here -->
+        </tbody>
+    </table>
+    <script>
+        // Define an empty array at the start
+        var contacts = [];
+
+        // Function to show the data from localStorage
+        function show() {
+            // Load contacts from localStorage
+            contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+
+            document.getElementById("bdy").innerHTML = "";  // Clear the table before showing new data
+
+            var i = 0;
+            while (i < contacts.length) {
+                
+
+                var row = document.createElement("tr");  // Create a new row for the table
+                var cell1 = document.createElement("td");  // Create first cell for name
+                var cell2 = document.createElement("td");  // Create second cell for phone
+
+                cell1.innerHTML = contacts[i].name;  // contact.name -> name
+                cell2.innerHTML = contacts[i].phone;  // contact.phone -> phone
+
+                row.append(cell1);
+                row.append(cell2);
+
+                document.getElementById("bdy").append(row);
+
+                i++;  // Increment the index to go to the next contact
+            }
+        }
+
+        // Function to save the data to localStorage
+        function save() {
+            var name = document.getElementById("txtName").value;
+            var phone = document.getElementById("txtPhone").value;
+
+            var newContact = {
+                name: name,
+                phone: phone
+            };
+
+            // Load existing contacts from localStorage
+            contacts = JSON.parse(localStorage.getItem("contacts")) || []; 
+
+            // Add new contact to the array
+            contacts.push(newContact);
+
+            // Save the updated array to localStorage
+            localStorage.setItem("contacts", JSON.stringify(contacts));
+
+            show();  // Display the updated table
+
+            // Clear the input fields after saving
+            document.getElementById("txtName").value = "";
+            document.getElementById("txtPhone").value = "";
+        }
+
+        // Initial call to show() to load data from localStorage when the page is loaded
+        show();
+    </script>
+</body>
+
+</html>

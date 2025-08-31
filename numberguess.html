@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+        input,p{
+            margin-left:200px;
+        }
+        p{
+            margin-top:30px
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Number Generator</h1>
+    <input type="number" id="num">
+    <button onclick="set()">Guess Here</button>
+    <p id="message"></p>
+    <script>
+        let randomNumber=Math.floor(Math.random()*10)+1;
+
+        function set(){
+
+            let user =parseInt( document.getElementById("num").value)
+            let mess = document.getElementById("message")
+
+            if(user===randomNumber){
+                mess.innerHTML="congrats! you win"
+            }
+            else{
+                mess.innerHTML="fail!"
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: skyblue;
+        }
+
+        #row {
+            height: 400px;
+            width: 40%;
+            background-color: #fff;
+            border-radius: 20%;
+            position: absolute;
+            left: 400px;
+            top: 100px;
+            overflow: scroll;
+        }
+
+        input {
+            /* position: absolute; */
+            margin-top: 10px;
+           margin-left: 180px;
+            width: 30%;
+            border: 3px solid black;
+        }
+
+        button {
+            /* position: absolute; */
+            margin-top: 20px;
+            margin-left: 210px;
+            background-color: black;
+            color: white;
+
+        }
+        h1{
+            margin-left: 190px;
+        }
+    </style>
+</head>
+
+<body id="bdy">
+    <div id="row">
+        <input type="text" id="txt"><br>
+        <button onclick=set()>click here </button>
+    </div>
+    <script>
+        function set() {
+            let x = document.getElementById("txt").value
+            let y = document.createElement("h1")
+            y.innerHTML = x
+            document.getElementById("row").appendChild(y)
+        }
+    </script>
+</body>
+
+</html>

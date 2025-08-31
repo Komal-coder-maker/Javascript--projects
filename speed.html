@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            body{
+            background-color: darkolivegreen;
+        }
+        #row{
+            height: 400px;
+            width: 40%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 100px;
+            left: 400px;}
+    </style>
+</head>
+<body>
+    <div id="row">
+        <h1>Speed Calculator</h1><br>
+        <input type="number" placeholder=" " id="num"><br><br>
+        <button onclick="set()">Get speed here </button>
+        <h2 id="result"></h2>
+    <script>
+        function set(){
+            let x = document.getElementById("num").value
+            
+            let speedlimit=60;
+            if(x== ""){
+                mess="Please enter the speed limit"
+            }
+
+             else if (x < speedlimit){
+                mess="you are under the speedlimit"
+            }
+            else{
+                mess="Your speed over the sppedlimit "
+            }
+
+            document.getElementById("result").innerHTML=mess
+        }
+    </script>
+</body>
+</html>

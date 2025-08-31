@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="txt"><br><br>
+    <input type="text" id="number"><br><br>
+    <input type="text" id="address"><br><br>
+
+    <button onclick="set()">Save</button>
+    <br><br>
+    <table border="2px solid black">
+        <th>Name</th>
+        <th>phone no.</th>
+        <th>Address</th>
+
+        <tbody id="bdy">
+
+        </tbody>
+
+
+    </table>
+
+    <br><br> 
+    <button onclick="rem()">Clear All</button>
+
+    <script>
+        function set() {
+            let x = document.getElementById("txt").value
+            let y = document.getElementById("number").value
+            let z = document.getElementById("address").value
+
+            let row = document.createElement("tr")
+            document.getElementById("bdy").append(row)
+
+            let data1 = document.createElement("td")
+            let data2 = document.createElement("td")
+            let data3 = document.createElement("td")
+            let data4 = document.createElement("td")
+
+
+
+            let a = document.createElement("button")
+            a.innerHTML="delete"
+            // a.class("btn-danger")
+            data4.append(a)
+            a.setAttribute("onclick","del(this)")
+
+
+
+            data1.innerHTML = x
+            data2.innerHTML = y
+            data3.innerHTML = z
+
+            // if (x == "" || y == "" || z == "") {
+            //     alert("plese fill the blank")
+            //     return
+            // }
+
+            // if (y < 10) {
+            //     alert("plese fill the correct digit")
+            //     return
+            // }
+
+
+            // if (isNaN(y)) {
+            //     alert("plese fill the digit")
+            //     return
+            // }
+
+
+           
+            
+
+
+
+            row.append(data1)
+            row.append(data2)
+            row.append(data3)
+            row.append(data4)
+
+
+            reset()
+
+        }
+
+
+        // function reset() {
+        //     document.getElementById("txt").value = ""
+        //     document.getElementById("number").value = ""
+        //     document.getElementById("address").value = ""
+        // }
+
+        function del(curr){
+        var cuu= curr.parentElement.parentElement.style.display="none"
+        
+        }
+
+
+        function rem(){
+            document.getElementById("bdy").innerHTML=""
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>

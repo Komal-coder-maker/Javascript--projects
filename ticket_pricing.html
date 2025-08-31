@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          body{
+            background-color: darkolivegreen;
+        }
+        #row{
+            height: 400px;
+            width: 40%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 100px;
+            left: 400px;}
+    </style>
+</head>
+<body>
+    <div id="row">
+        <h1>Movie Ticket Pricing</h1><br>
+        <input type="number" placeholder="Enter The Age " id="num"><br><br>
+        <button onclick="set()">Get Ticket Price</button>
+        <h2 id="result"></h2>
+        <script>
+            function set(){
+            let x = document.getElementById("num").value
+            if(x<0){
+                result="Invalid Age!"
+            }
+            else if(x<=15){
+                result="Child Ticket Price::100 rs"
+            }
+            else if(x<=25){
+                result="Teen Ticket Price::200 rs"
+            }
+            else if(x<=60){
+                result="Adult Ticket Price::300rs"
+            }
+            else {
+                result="senior  Ticket Price:400 rs"
+            }
+
+            document.getElementById("result").innerHTML=result
+
+        }
+        </script>
+</body>
+</html>
