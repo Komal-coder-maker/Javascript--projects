@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="txtName" placeholder="Enter Name:"> <br>
+    <input type="text" id="txtPhone" placeholder="Enter Phone:"> <br>
+    <input type="text" id="txtAddress" placeholder="Enter Address:"> <br>
+    <button onclick="save()">Save</button>
+    <button onclick="show()">Show</button>
+    <table border="2">
+        <thead>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+        </thead>
+        <tbody id="bdy">
+
+        </tbody>
+    </table>
+
+    <script>
+        var arr = []
+        show()
+        function show()
+        {
+            document.getElementById("bdy").innerHTML=""
+            arr = JSON.parse(localStorage.getItem("first")) // Re-fill
+            arr.forEach(function(obj){
+
+                var row=document.createElement("tr")
+                
+                var cell1=document.createElement("td")
+                var cell2=document.createElement("td")
+                var cell3=document.createElement("td")
+
+                cell1.innerHTML=obj.Name
+                cell2.innerHTML=obj.Phone
+                cell3.innerHTML=obj.Address
+
+                row.append(cell1,cell2,cell3)
+                document.getElementById("bdy").append(row)
+                 
+            })
+        }
+
+        function save() {
+            arr = JSON.parse(localStorage.getItem("first")) // Re-fill
+            if (arr == null) {
+                arr = []
+            }
+            var name = document.getElementById("txtName").value
+            var phone = document.getElementById("txtPhone").value
+            var address = document.getElementById("txtAddress").value
+            var obj = {
+                Name: name,
+                Phone: phone,
+                Address: address
+            }
+            arr.push(obj)
+            localStorage.setItem("first", JSON.stringify(arr))
+            show()
+        }            
+    </script>
+</body>
+
+</html>

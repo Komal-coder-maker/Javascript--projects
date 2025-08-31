@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 100px;
+            width: 100px;
+            border: 1px solid black;
+            float: left;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <br><br><br> <br><br><br><br>
+    <button onclick="red()">Red</button>
+    <button onclick="blue()">Blue</button>
+    <button onclick="Green()">Green</button>
+</body>
+<script>
+    function red(){
+       var x =  document.getElementsByTagName("div")
+      i=0
+      while(i<=x.length-1){
+        x[i].style.backgroundColor="red"
+        i++
+      }
+    }
+    function blue(){
+        var x =  document.getElementsByTagName("div")
+        i=0
+        while(i<=x.length-1){
+            x[i].style.backgroundColor="blue"
+            i++
+        }
+    }
+        function Green(){
+        var x =  document.getElementsByTagName("div")
+        i=0
+        while(i<=x.length-1){
+            x[i].style.backgroundColor="green"
+            i++
+        }
+    }
+    
+</script>
+</html>

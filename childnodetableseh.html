@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>name</th>
+            <th>phone no.</th>
+            <th>address</th>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>komal</td>
+                <td>13213434</td>
+                <td>meham</td>
+            </tr>
+            <tr>
+                <td>kiran</td>
+                <td>75343434</td>
+                <td>saman</td>
+            </tr>
+            <tr>
+                <td>asha</td>
+                <td>708236534</td>
+                <td>meham</td>
+            </tr>
+            <tr>
+                <td>kirti</td>
+                <td>43845439434</td>
+                <td>rohtak</td>
+            </tr>
+        </tbody>
+        <script>
+            let row=document.getElementsByTagName("tr")
+            i=1
+            while(i<=row.length-1){
+                row[i].childNodes[1].style.backgroundColor="red"
+                // console.log(row[i].childNodes[1].textContent,row[1].childNodes[3].textContent, row[i].childNodes[5].textContent)
+                i++
+            }
+        </script>
+    </table>
+    
+</body>
+</html>

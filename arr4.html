@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Highlight Using While Loop</title>
+<style>
+  table, th, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  table {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<center>
+  <input type="text" id="txt" placeholder="Enter name, phone, or address" />
+  <br><br>
+  <button onclick="highlightCell()">Change Color</button>
+</center>
+
+<center>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone no.</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>komal</td><td>9812326320</td><td>Meham</td></tr>
+      <tr><td>asha</td><td>7082365407</td><td>Meham</td></tr>
+      <tr><td>mohit</td><td>7684376</td><td>delhi</td></tr>
+      <tr><td>rohit</td><td>878298082</td><td>hisar</td></tr>
+      <tr><td>shyam</td><td>981273783</td><td>rohtak</td></tr>
+      <tr><td>ram</td><td>97218979812</td><td>delhi</td></tr>
+    </tbody>
+  </table>
+</center>
+
+<script>
+function highlightCell() {
+  var input = document.getElementById('txt').value.toLowerCase().trim();
+  var cells = document.getElementsByTagName('td');
+
+  // Reset all cells background color first
+//   var i = 0;
+//   while(i < cells.length) {
+//     cells[i].style.backgroundColor = '';
+//     i++;
+//   }
+
+  // Now check and highlight matching cells
+  i = 0;
+  while(i < cells.length) {
+    if(cells[i].innerText.toLowerCase() === input) {
+      cells[i].style.backgroundColor = 'yellow';
+    }
+    i++;
+  }
+}
+</script>
+
+</body>
+</html>

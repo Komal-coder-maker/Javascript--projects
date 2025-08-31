@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="bootstrap.css" />
+  <style>
+    body {
+      background: linear-gradient(to right, #00bcd4, #4caf50);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      /* padding: 40px; */
+    }
+
+    .container {
+
+      width: 60%;
+      margin-top: 40px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #4a148c;
+      font-weight: bold;
+    }
+
+    input.form-control {
+      border-radius: 10px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      border-radius: 10px;
+      margin-right: 10px;
+    }
+
+    .btn-group {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    table {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th {
+      background-color: #7e57c2;
+      color: white;
+      text-align: center;
+    }
+
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Registration Form</h1>
+
+    <input type="text" class="form-control mb-3" id="txtName" placeholder="Enter The Name" />
+    <input type="text" class="form-control mb-3" id="txtPhone" placeholder="Enter The Phone" />
+    <input type="text" class="form-control mb-3" id="txtAddress" placeholder="Enter The Address" />
+
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="save()">Save</button>
+      <button class="btn btn-danger" onclick="multipleDelete()">Delete</button>
+      <button class="btn btn-warning" onclick="deleteAll()">Delete All</button>
+    </div>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+          <th>
+            <input type="checkbox" id="chk" onclick="set()">
+            Select</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Delete</th>
+      </thead>
+      <tbody id="bdy">
+
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+  function multipleDelete(){
+    var rows=document.getElementById("bdy").getElementsByTagName("tr")
+    i=0
+    while(i<=rows.length-1){
+      var cell=rows[i].childNodes[0].childNodes[0]
+      if(cell.checked==true){
+        rows[i].style.display="none"
+      }
+      i++
+    }
+
+  }
+    function set() {
+      if (document.getElementById("chk").checked == true) {
+        var rows = document.getElementById("bdy").getElementsByTagName("tr")
+        i = 0
+        while (i <= rows.length - 1) {
+          rows[i].childNodes[0].childNodes[0].checked = true
+          i = i + 1
+        }
+      }
+       else {
+                 var rows = document.getElementById("bdy").getElementsByTagName("tr")
+                i = 0
+                while (i <= rows.length - 1) {
+                    rows[i].childNodes[0].childNodes[0].checked=false
+                    i = i + 1
+                }
+            }
+
+    }
+    function save() {
+      let x = document.getElementById("txtName").value;
+      let y = document.getElementById("txtPhone").value;
+      let z = document.getElementById("txtAddress").value;
+
+      var row = document.createElement("tr");
+      
+      var cell1 = document.createElement("td");
+      var cell2 = document.createElement("td");
+      var cell3 = document.createElement("td");
+      var cell4 = document.createElement("td");
+      var cell = document.createElement("td")
+      
+      var edit = document.createElement("button")
+      edit.innerHTML="Edit"
+      edit.setAttribute("onclick",edit(this))
+      cell4.append(edit)
+
+
+      var input = document.createElement("input")
+      input.type = "checkbox"
+      cell.append(input)
+
+      var button = document.createElement("button");
+      button.innerHTML = "Delete"
+      button.setAttribute("onclick", "del(this)")
+
+
+
+      cell1.innerHTML = x;
+      cell2.innerHTML = y;
+      cell3.innerHTML = z;
+      cell4.appendChild(button);
+
+      row.append(cell);
+      row.append(cell1);
+      row.append(cell2);
+      row.append(cell3);
+      row.append(cell4);
+
+      document.getElementById("bdy").append(row)
+
+    }
+    function del(current) {
+      var curr = current.parentNode.parentNode.remove()
+
+    }
+    function deleteAll() {
+
+      document.getElementById("bdy").innerHTML = ""
+      document.getElementById("txtName").value = ""
+      document.getElementById("txtPhone").value = ""
+      document.getElementById("txtAddress").value = ""
+    }
+
+
+  </script>
+</body>
+
+</html>

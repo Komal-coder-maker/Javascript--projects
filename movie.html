@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        body{
+            background-color: black;
+        }
+        h1{
+            color: white;
+            position: absolute;
+            margin-left:500px;
+            font-family: cursive;
+        }
+        form{
+            position: absolute;
+            margin-left: 500px;
+            margin-top: 100px;
+            /* background-color: white; */
+            width: 30%
+        }
+        input{
+            border: none;
+            background:linear-gradient( to right ,white,orange);
+            height: 35px;
+            border-radius: 20px;
+            width: 50%;
+            padding-left: 20px;
+        }
+        button{
+            height: 30px;
+            border: none;
+            border-radius: 20px;
+            width: 30%;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Api Call </h1>
+    <form  id="frm">
+        <input type="text" id="txt" placeholder="Enter The Movie Name">
+        <button id="btn" class="btn btn-success">Search</button>
+    </form><br><br><br><br><br><br><br><br>
+    <div id="second"></div>
+
+    <script>
+        let form=document.getElementById("frm")
+        let sec = document.getElementById("second")
+        form.addEventListener("submit",function(e){
+            e.preventDefault()
+            let txt=form.querySelector("input").value   
+            apicall(txt)
+        })
+      async  function apicall(movie){
+              let request=await fetch (`https://api.tvmaze.com/search/shows?q=${movie}`)
+              let response= await request.json()
+              console.log(response)
+              print(response)
+        }
+       
+          function print(result) {
+    sec.innerHTML = ""; 
+
+    result.forEach(function(event) {
+        if (event.show.image) {
+            // 🔹 Wrapper div
+            let box = document.createElement("div");
+            box.style.display = "inline-block";
+            box.style.margin = "20px";
+            box.style.textAlign = "center";
+
+           
+            let image = document.createElement("img");
+            image.src = event.show.image.medium;
+            image.style.height = "180px";
+            image.style.width = "120px";
+            image.style.borderRadius = "10px";
+            image.style.display = "block";
+
+         
+            let link = document.createElement("a");
+            link.href = event.show.url;
+            link.target = "_blank"; 
+            link.innerText = event.show.name;
+
+          
+            link.style.color = "cyan";
+            link.style.textDecoration = "underline";
+            link.style.fontFamily = "cursive";
+            link.style.marginTop = "10px";
+            link.style.display = "inline-block";
+            link.style.cursor = "pointer";
+
+           
+            box.appendChild(image);
+            box.appendChild(link);
+
+          
+            sec.appendChild(box);
+        }
+    });
+}
+
+
+    </script>
+</body>
+</html>

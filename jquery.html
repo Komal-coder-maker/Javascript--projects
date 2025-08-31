@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        #box {
+            height: 100px;
+            background-color: slateblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <button id="btnOne">One</button>
+    <button id="btnTwo">Two</button>
+    <button id="btnThree">Three</button>
+    <script>
+        $(document).ready(function () {
+            $("#box").click(function(){
+                $("#box").fadeOut(3000)
+            })
+             $("#btnOne").click(function(){
+                    // $("#box").hide(3000)
+                    //  $("#box").fadeOut(3000)
+                    // $("#box").slideUp(3000)
+                     $("#box").slideUp(3000,function(){
+                         $("#box").slideDown(3000,function(){
+                             $("#box").fadeOut(3000,function(){
+                                 $("#box").fadeIn(3000,function(){
+                                     $("#box").hide(3000,function(){
+                                         $("#box").show(3000)
+                                     })
+                                 })
+                             })
+                         })
+        })
+             }) 
+             $("#btnTwo").click(function(){
+                //  $("#box").show(3000)
+                // $("#box").fadeIn(3000)
+                $("#box").slideDown(3000)
+             })
+             $("#btnThree").click(function(){
+                //  $("#box").toggle(2000)
+                // $("#box").fadeToggle(3000)
+                $("#box").slideToggle(3000)
+             })
+        })
+    </script>
+</body>
+
+</html>

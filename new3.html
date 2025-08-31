@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body id="bdy">
+    <center>
+      <button onclick="mobile1()">Iphone phone</button>
+      <button onclick="mobile2()">Samsung</button>
+      <button onclick="mobile3()">Oppo</button>
+      <button onclick="mobile4()">Redmi</button>
+      <button onclick="allData()">All</button>
+    </center>
+    <div id="container"></div>
+  </body>
+  <script>
+    let container = document.getElementById("container");
+    let arr = [
+      {
+        Name: "iphone",
+        price: 80000,
+        path: "iphon1.jpg",
+      },
+      { Name: "Redmi", price: 20000, path: "redmi1.jpg" },
+      { Name: "Oppo", price: 10000, path: "opppo2.jpg" },
+      {
+        Name: "iphone",
+        price: 60000,
+        path: "iphone2.jpg",
+      },
+      {
+        Name: "iphone",
+        price: 90000,
+        path: "iphone3.jpg",
+      },
+      {
+        Name: "Samsung",
+        price: 70000,
+        path: "samsung2.jpg",
+      },
+      {
+        Name: "Samsung",
+        price: 60000,
+        path: "samsung4.jpg",
+      },
+      { Name: "Redmi", price: 20000, path: "redmi1.jpg" },
+      { Name: "Redmi", price: 60000, path: "redmi2.jpg" },
+      { Name: "Oppo", price: 20000, path: "oppo.jpg" },
+      {
+        Name: "Oppo",
+
+        price: 10000,
+        path: "opppo2.jpg",
+      },
+      {
+        Name: "iphone",
+        price: 60000,
+        path: "iphone2.jpg",
+      },
+      {
+        Name: "Samsung",
+        price: 90000,
+        path: "samsung3.jpg",
+      },
+      { Name: "Redmi", price: 20000, path: "redmi1.jpg" },
+      { Name: "Samsung", price: 70000, path: "samsung2.jpg" },
+    ];
+
+    function mobile1() {
+      let data = arr.filter(function (item) {
+        return item.Name === "iphone";
+      });
+      showData(data);
+    }
+
+    function mobile2() {
+      let data = arr.filter(function (item) {
+        return item.Name === "Samsung";
+      });
+      showData(data);
+    }
+
+    function mobile3() {
+      let data = arr.filter(function (item) {
+        return item.Name === "Oppo";
+      });
+      showData(data);
+    }
+
+    function mobile4() {
+      let data = arr.filter(function (item) {
+        return item.Name === "Redmi";
+      });
+      showData(data);
+    }
+    
+    function allData() {
+      let data = arr.map(function (item) {
+        return item;
+      });
+      showData(data);
+    }
+
+    allData();
+
+    function showData(data) {
+      container.innerHTML = "";
+      data.forEach(function (obj) {
+        var box = document.createElement("div");
+        box.style.height = "280px";
+        box.style.width = "27%";
+        box.style.border = "2px solid black";
+        box.style.margin = "30px";
+        box.style.float = "left";
+
+        var image = document.createElement("img");
+        image.style.height = "80%";
+        image.style.width = "100%";
+        image.src = obj.path;
+
+        var span = document.createElement("span");
+        span.innerHTML = obj.Name;
+        span.style.fontSize = "25px";
+        span.style.marginLeft = "10px";
+
+        var spanprice = document.createElement("span");
+        spanprice.innerHTML = "Rs." + obj.price;
+        spanprice.style.fontSize = "25px";
+        spanprice.style.marginLeft = "20px";
+        spanprice.style.marginTop = "15px";
+
+        var spanoffer = document.createElement("span");
+        spanoffer.innerHTML = "Rs." + (obj.price + 10000);
+        spanoffer.style.fontSize = "25px";
+        spanoffer.style.textDecoration = "line-through";
+        spanoffer.style.marginLeft = "5px";
+        spanoffer.style.marginTop = "15px";
+        spanoffer.style.color = "red";
+        spanoffer.style.marginLeft = "15px";
+
+        box.append(image);
+        box.append(span);
+        box.append(spanprice);
+        box.append(spanoffer);
+        container.append(box);
+      });
+    }
+  </script>
+</html>

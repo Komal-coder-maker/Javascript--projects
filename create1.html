@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightgoldenrodyellow;
+        }
+        /* #color{
+            display: none;
+            margin-top
+            : 4px;
+        } */
+        .count:hover{
+            transition: 3s;
+            transform: scale(1,1);
+            box-shadow: 0px 5px 2px black;
+        }
+    </style>
+</head>
+
+<body id="bdy">
+    <input type="number" id="hei" placeholder="Enter the height"> <input type="number" name="" id="wid" placeholder="Enter the width">
+    <input type="text" id="color" placeholder="Enter the color"> <input type="number" id="size" placeholder="Enter the size of box">
+    <br><br>
+    <select  id="sel">
+        <option >red</option>
+        <option >green</option>
+        <option >blue</option>
+        <option >black</option>
+        <option >white</option>
+    </select>
+    <button onclick="plus()">+</button>
+    <button onclick="add()">Add</button>
+    <button onclick="create()">Create</button>
+    <h1 id="result"></h1>
+    <br><br>
+    <script>
+        
+        // function plus(){
+        // document.getElementById("color").style.display="block"
+        // }
+        function update(){
+          let val=document.getElementsByClassName("count").length
+          document.getElementById("result").innerHTML="totalboxes ::" +val
+        }
+        
+        function add(){
+            var x = document.getElementById("color").value
+            var op= document.createElement("option")
+            op.innerHTML=x
+            document.getElementById("sel").append(op)
+        }
+       
+       function create(){
+        
+          var box= document.createElement("div")
+          box.innerHTML="label text"
+          box.style.padding="40px"
+          box.className="count"
+        
+         var h = document.getElementById("hei").value
+          var w= document.getElementById("wid").value
+          var c= document.getElementById("color").value
+          var s = document.getElementById("sel").value
+          var r= document.getElementById("size").value
+        
+        box.style.height=h+"px"
+        box.style.margin="10px"
+        box.style.width=w+"px"
+        box.style.float="left"
+        box.style.borderRadius=r+"%"
+        box.style.border="1px solid black"
+        box.style.backgroundColor=s  // aggr input vala color lena hota toh s ki jgeh c likh dette input ki value aajati 
+
+        document.getElementById("bdy").append(box)
+        update()
+       }
+    </script>
+    
+</body>
+</html>

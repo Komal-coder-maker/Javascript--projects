@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        th,td{
+            text-align: center;
+            font-size: 20px;
+        }
+        th{
+            background-color: #c32143;
+            color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="container" id="box">
+        <h2>Registration Table....</h2>
+        <hr>
+        <input class="form-control" type="text" id="txtName" placeholder="Enter Name:"> <br>
+        <input class="form-control" type="text" id="txtPhone" placeholder="Enter Phone:"> <br>
+        <input class="form-control" type="text" id="txtAddress" placeholder="Enter Address:"> <br>
+        <button class="btn btn-success" onclick="save()">Save</button>
+        <button class="btn btn-primary" onclick="show()">Show</button>
+        <table class="table table-bordered">
+            <thead>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+            </thead>
+            <tbody id="bdy">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        show()
+        var arrData = []
+
+        function show() {
+            document.getElementById("bdy").innerHTML = ""
+            arrData = JSON.parse(localStorage.getItem("allRecords"))
+            var i = 0
+            while (i <= arrData.length - 1) {
+                var row = document.createElement("tr")
+
+                var cell1 = document.createElement("td")
+                var cell2 = document.createElement("td")
+                var cell3 = document.createElement("td")
+                
+                cell1.innerHTML = arrData[i].name
+                
+                cell2.innerHTML = arrData[i].phone
+                cell3.innerHTML = arrData[i].address
+
+                row.append(cell1)
+                row.append(cell2)
+                row.append(cell3)
+
+                document.getElementById("bdy").append(row)
+                i = i + 1
+            }
+        }
+
+        function save() {
+            arrData = JSON.parse(localStorage.getItem("allRecords")) 
+            if(arrData==null){
+                arrData=[]
+            }
+
+            var name = document.getElementById("txtName").value
+            var phone = document.getElementById("txtPhone").value
+            var address = document.getElementById("txtAddress").value
+
+            arrData.push({ name: name, phone: phone, address: address })
+
+            localStorage.setItem("allRecords", JSON.stringify(arrData))
+            show()
+        }
+    </script>
+</body>
+
+</html>

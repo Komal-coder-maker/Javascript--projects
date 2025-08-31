@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        #box {
+            height: 100px;
+            background-color: slateblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+    </div>
+    <button id="btnOne">One</button>
+    <button id="btnTwo">Two</button>
+    <button id="btnThree">Three</button>
+    <script>
+        $(document).ready(function () {
+         $("#btnOne").click(function(){
+            $("#box").fadeOut(3000,function(){
+                $("#box").slideDown(3000)
+            })
+         })
+
+         $("#btnTwo").click(function(){
+            $("box").fadeIn(3000)
+         })
+
+
+        })
+    </script>
+</body>
+
+</html>

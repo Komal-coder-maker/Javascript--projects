@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <input type="text" id="txtName" placeholder="enter the name ">
+    <br><br>
+    <button onclick="save()">Save</button>
+    <br>
+    <button onclick="show()">show</button>
+
+</head>
+<body>
+    <script>
+         var arr=[]
+        //  function show(){
+        //     var arr=JSON.parse(localStorage.getItem("first"))
+        //     console.log(arr)
+
+        //  }
+        function save(){
+            // var arr =  JSON.parse(localStorage.getItem("first"))
+            // if(arr==null){
+            //     arr=[]
+            // }
+            var data= document.getElementById("txtName").value
+            arr.push(data)
+            localStorage.setItem("first",JSON.stringify(arr))
+        }
+    </script>
+    
+</body>
+</html>

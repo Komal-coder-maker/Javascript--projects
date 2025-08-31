@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        #first {
+            width: 80%;
+            border-radius: 2px;
+            border: 1px solid black;
+            margin-top: 60px;
+            padding-top: 20px;
+            padding-bottom: 6px;
+            box-shadow: 1px 1px 1px 1px black;
+        }
+
+        th {
+            background-color: slateblue;
+            text-align: center;
+        }
+
+        body {
+            background: linear-gradient(to right, skyblue, wheat);
+        }
+
+        tr {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Detail Form.....</h1>
+    </center>
+    <div id="first" class="container">
+        <input class="form-control " type="text" id="txtName" placeholder="Enter the name "><br><br>
+        <input class="form-control" type="text" id="txtPhone" placeholder="Enter the phone number "><br><br>
+        <input class="form-control" type="text" id="txtAddress" placeholder="Enter the Address"><br><br>
+        <br> 
+        <button class="btn btn-primary" onclick="save()">Save</button> 
+        <button class="btn btn-danger" onclick="reset()">Delete </button> 
+        <button class="btn btn-danger" onclick="deleteall()">Delete All </button>
+    </div>
+    <br><br>
+    <div class="container">
+        <center>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th> <input type="checkbox" id="check" onclick="set()">Select</th>
+                    <th>Name</th>
+                    <th>Phone Number </th>
+                    <th>Address</th>
+                    <th>Operation</th>
+                </thead>
+                <tbody id="bdy"></tbody>
+            </table>
+        </center>
+    </div>
+</body>
+
+<script>
+    function deleteall() {
+        document.getElementById("bdy").innerHTML = ""
+    }
+
+    function reset() {
+        var rows = document.getElementById("bdy").getElementsByTagName("tr")
+        i = 0
+        while (i <= rows.length - 1) {
+            var cell = rows[i].childNodes[0].childNodes[0]
+            if (cell.checked == true) {
+                rows[i].style.display = "none"
+            }
+            i++
+        }
+    }
+
+    function save() {
+        var name = document.getElementById("txtName").value
+        var phone = document.getElementById("txtPhone").value
+        var address = document.getElementById("txtAddress").value
+
+        var row = document.createElement("tr")
+
+        var cell0 = document.createElement("td")
+        var cell1 = document.createElement("td")
+        var cell2 = document.createElement("td")
+        var cell3 = document.createElement("td")
+        var cell4 = document.createElement("td")
+
+        // ✅ CHECKBOX
+        var input = document.createElement("input")
+        input.type = "checkbox"
+        cell0.append(input)
+
+        cell1.innerHTML = name
+        cell2.innerHTML = phone
+        cell3.innerHTML = address
+
+        // ✅ EDIT BUTTON
+        var editBtn = document.createElement("button")
+        editBtn.innerHTML = "Edit"
+        editBtn.setAttribute("onclick", "editRow(this)")
+        editBtn.setAttribute("class", "btn btn-warning btn-sm me-2")
+        cell4.append(editBtn)
+
+        // ✅ DELETE BUTTON
+        var button = document.createElement("button")
+        button.innerHTML = "Delete"
+        button.setAttribute("onclick", "del(this)")
+        button.setAttribute("class", "btn btn-danger btn-sm")
+        cell4.append(button)
+
+        row.append(cell0)
+        row.append(cell1)
+        row.append(cell2)
+        row.append(cell3)
+        row.append(cell4)
+
+        document.getElementById("bdy").append(row)
+    }
+
+    function del(curr) {
+        curr.parentNode.parentNode.style.display = "none"
+    }
+
+    // ✅ EDIT FUNCTION — SIRF ADD KIYA HAI
+    function editRow(button) {
+        var row = button.parentNode.parentNode
+        var name = row.childNodes[1].innerHTML
+        var phone = row.childNodes[2].innerHTML
+        var address = row.childNodes[3].innerHTML
+
+        document.getElementById("txtName").value = name
+        document.getElementById("txtPhone").value = phone
+        document.getElementById("txtAddress").value = address
+
+        row.remove()
+    }
+
+    function set() {
+        if (document.getElementById("check").checked == true) {
+            var rows = document.getElementById("bdy").getElementsByTagName("tr")
+            i = 0
+            while (i <= rows.length - 1) {
+                rows[i].childNodes[0].childNodes[0].checked = true
+                i++
+            }
+        } else {
+            var rows = document.getElementById("bdy").getElementsByTagName("tr")
+            i = 0
+            while (i <= rows.length - 1) {
+                rows[i].childNodes[0].childNodes[0].checked = false
+                
+                i++
+            }
+        }
+    }
+</script>
+</html>

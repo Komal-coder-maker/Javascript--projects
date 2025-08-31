@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simple Typing Game</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  #letter {
+    font-size: 100px;
+    margin: 50px;
+  }
+  #score {
+    font-size: 24px;
+  }
+  input {
+    font-size: 24px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Type The Letter Game</h1>
+<div id="letter">A</div>
+<input type="text" id="inputBox" maxlength="1" autofocus />
+
+<div id="score">Score: 0</div>
+
+<script>
+  var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var score = 0;
+  var letterDisplay = document.getElementById('letter');
+  var inputBox = document.getElementById('inputBox');
+  var scoreDisplay = document.getElementById('score');
+
+  // Function to show random letter
+  function showRandomLetter() {
+    var randomIndex = Math.floor(Math.random() * letters.length);
+    letterDisplay.textContent = letters[randomIndex];
+  }
+
+  inputBox.addEventListener('input', function() {
+    var typed = inputBox.value.toUpperCase();
+    if (typed === letterDisplay.textContent) {
+      score++;
+      scoreDisplay.textContent = "Score: " + score;
+      showRandomLetter();
+      inputBox.value = "";
+    } else {
+      // गलत टाइप किया तो खाली कर दो input
+      inputBox.value = "";
+    }
+  });
+
+  // शुरू में एक letter दिखाओ
+  showRandomLetter();
+</script>
+
+</body>
+</html>

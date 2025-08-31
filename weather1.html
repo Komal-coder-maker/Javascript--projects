@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+        }
+        #first{
+            height: 100px;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #second{
+            height: 100px;
+            width: 50%;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+        }
+        input{
+            font-size: 20px;
+            height: 40px;
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 1px 1px 15px black;
+            background:linear-gradient(to right,purple,orange);
+        }
+        img{
+            height: 90px;
+        }
+        h2{
+            font-size: 40px;
+            margin-left: 20px;
+        }
+        h3{
+            font-size: 40px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="first">
+        <input type="search" id="search" placeholder="Enter city" onkeypress="if(event.key==='Enter'){getWeather()}">
+    </div>
+    <br>
+    <div id="second">
+        <img src="weather-removebg-preview.png" alt="">
+        <div id="row"><h2>--°C</h2><h3>---</h3></div>
+    </div>
+
+    <script>
+        async function getWeather() {
+            const city = document.getElementById("search").value;
+            //const apiKey = "YOUR_API_KEY"; // 👈 Yahan apni OpenWeatherMap API key lagayein
+            mykey = '2cb51838047338dc7b10e1185531f61f'
+            apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=CITY_NAME&appid=${mykey}
+        `
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+
+                document.querySelector("h2").innerText = data.main.temp + "°C";
+                document.querySelector("h3").innerText = data.weather[0].main;
+                console.log(data)
+
+            } catch (error) {
+                alert("City not found or network error");
+            }
+        }
+    </script>
+</body>
+</html>

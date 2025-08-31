@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TVMaze Movie Search</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #4568dc, #b06ab3);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: sans-serif;
+      padding: 40px;
+    }
+    input {
+      padding: 10px;
+      width: 300px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 1px 1px 10px black;
+    }
+    #result {
+      margin-top: 30px;
+      text-align: center;
+    }
+    img {
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 15px black;
+    }
+    h2, p {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="search" id="search" placeholder="Enter movie/show name...">
+  <div id="result"></div>
+
+  <script>
+    const searchBox = document.getElementById("search");
+    const result = document.getElementById("result");
+
+    async function getShow(name) {
+      const res = await fetch(`https://api.tvmaze.com/search/shows?q=${name}`);
+      const data = await res.json();
+      const show = data[0].show;
+
+      result.innerHTML = `
+        <img src="${show.image ? show.image.medium : ''}" alt="poster">
+        <h2>${show.name}</h2>
+        <p><strong>Language:</strong> ${show.language}</p>
+        <p><strong>Genres:</strong> ${show.genres.join(", ")}</p>
+        <p><strong>Rating:</strong> ${show.rating.average}</p>
+        <p><strong>Summary:</strong> ${show.summary.replace(/<[^>]*>?/gm, '')}</p>
+      `;
+    }
+
+    searchBox.addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        getShow(searchBox.value);
+      }
+    });
+  </script>
+
+</body>
+</html>

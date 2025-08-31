@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #i {
+            height: 200px;
+            width: 200px;
+            margin-top: 50px;
+            border: 1px solid black;
+            margin-left: 200px;
+        }
+
+        #ii {
+            height: 100px;
+            width: 100px;
+            border: 1px solid black;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+
+        #iii {
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+            margin-top: 20px;
+            margin-left: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="i">
+        <div id="ii">
+
+            <div id="iii">
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+<script>
+    let box= document.getElementById("i")
+    let box1=box.childNodes[1]
+    let box2=box.childNodes
+    console.log(box2)
+    
+</script>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        h1{
+            text-align: center;
+        }
+        #first{
+            border: 1px solid black;
+            margin: 20px;
+            height: 300px;
+            margin-left: 100px;
+        }
+        th{
+            background-color: slateblue;
+        }
+        th ,td{
+            border:1px solid black
+        }
+        
+    </style>
+</head>
+<body>
+    <div   id="first"class="container"> <h1>Registration And Add Data </h1>
+        <input class="form-control" type="text" id="textName" placeholder="Enter the name">
+    <br>
+    <input class="form-control" type="text" id="textPhone" placeholder="Enter the Phone no.">
+    <br>
+    <input class="form-control" type="text" id="textAddress" placeholder="Enter the address">
+     <br><br>
+     <button class="btn btn-primary" onclick="save()">Save Data</button>
+     <button class="btn btn-success" onclick="show()">Show Data</button>
+</div>
+<br>
+<div class="container">
+    <table class="table table-boreded ">
+    <thead>
+        <th>Name</th>
+        <th>phone number </th>
+        <th>Address</th>
+    </thead>
+    <tbody id="bdy"></tbody>
+</table>
+</div>
+    <script>
+        var arr=[]
+        function show(){
+            document.getElementById("bdy").innerHTML=""
+            arr=JSON.parse(localStorage.getItem("first"))
+            if(arr==null){
+                arr=[]
+            }
+            arr.forEach(function(value){
+                var row=document.createElement("tr")
+                var cell1=document.createElement("td")
+                var cell2=document.createElement("td")
+                var cell3=document.createElement("td")
+
+               cell1.innerHTML=value.name
+               cell2.innerHTML=value.phone
+               cell3.innerHTML=value.address
+
+
+
+                row.append(cell1)
+                row.append(cell2)
+                row.append(cell2)
+                document.getElementById("bdy").append(row)
+            })
+        }
+        function save(){
+            arr=JSON.parse(localStorage.getItem("first"))
+            if (arr==null){
+                arr=[]
+            }
+        var Name=document.getElementById("textName").value
+        var Phone=document.getElementById("textPhone").value
+        var Address=document.getElementById("textAddress").value
+
+        let obj={
+            "name":Name,
+            "phone":Phone,
+            "address":Address
+        }
+         arr.push(obj)
+
+        localStorage.setItem("first",JSON.stringify(arr))
+        }
+       
+    </script>
+   
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+        }
+        #first{
+            height: 100px;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #second{
+            height: 100px;
+            width: 50%;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+        }
+        input{
+            font-size: 20px;
+            height: 40px;
+            border: none;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 1px 1px 15px black;
+            background: linear-gradient(to right, purple, orange);
+            color: black;
+        }
+        img{
+            height: 90px;
+        }
+        h2{
+            font-size: 40px;
+        }
+        h3{
+            font-size: 40px;
+        }
+        h2, h3{
+            margin: 0px;
+        }
+        h3{
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="first">
+        <input type="search" id="search" placeholder="Search by city name">
+    </div>
+    <br>
+    <div id="second">
+        <img src="weather-removebg-preview.png" alt="">
+        <div id="row">
+            <h2 id="class">32℃</h2>
+            <h3>Clear</h3>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = "2cb51838047338dc7b10e1185531f61f";
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+        
+
+        const searchBox = document.getElementById("search");
+         searchBox.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                check(searchBox.value);
+            }
+        });
+
+        async function check(city) {
+            const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+            const data = await response.json();
+
+            document.getElementById("class").innerHTML = Math.round(data.main.temp) + "℃";
+            document.querySelector("h3").innerHTML = data.weather[0].main;
+
+        }
+
+       
+    </script>
+</body>
+</html>

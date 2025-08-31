@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table ,th,tr ,td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        
+    }
+    table{
+        margin-top: 20px;
+    } 
+
+</style>
+
+<body>
+
+    <center>
+        <input type="text" id="txt" placeholder="enter the name">
+    <br>
+    <br>
+     <button onclick="set()">change color </button>
+    </center>
+   <center>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>phone no.</th>
+            <th>Address</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>komal</td>
+                <td>9812326320</td>
+                <td>Meham</td>
+            </tr>
+            <tr>
+                <td>asha</td>
+                <td>7082365407</td>
+                <td>Meham</td>
+            </tr>
+            <tr>
+                <td>mohit</td>
+                <td>7684376</td>
+                <td>delhi</td>
+            </tr>
+            <tr>
+                <td>rohit</td>
+                <td>878298082</td>
+                <td>hisar</td>
+            </tr>
+            <tr>
+                <td>shyam</td>
+                <td>981273783</td>
+                <td>rohtak</td>
+            </tr>
+            <tr>
+                <td>ram</td>
+                <td>97218979812</td>
+                <td>delhi</td>
+            </tr>
+        </tbody>
+    </table>
+   </center>
+
+   <script>
+  function set(){
+    var arr= document.getElementsByTagName("td")
+    var name= document.getElementById("txt").value.toLowerCase()
+    i=0
+    while(i<arr.length){
+        // var cell=arr[i].getElementsByTagName("td")
+        // cell[0].style.backgroundColor="pink"
+        // arr[i].style.backgroundColor="pink"
+        if(arr[i].innerText.toLowerCase()===name){
+            arr[i].style.backgroundColor="blue"
+        }
+        // if(cell[2].innerText.toLowerCase()==name){
+        //     cell[2].style.backgroundColor="red"
+        // }
+
+
+        else{
+            arr[i].style.backgroundColor=""
+        }
+
+        i++
+    }
+  }
+
+    // var arr= document.getElementsByTagName("td")
+    // i=0
+    // while(i<=arr.length-1){
+    //     // console.log(arr[i])
+    //     arr[1].style.backgroundColor="pink"
+    //     i++
+    // }
+    
+   </script>
+</body>
+
+</html>

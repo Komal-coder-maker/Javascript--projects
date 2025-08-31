@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <input type="text" id="one">
+    <br>
+    <input type="text" id="two"><br>
+    <button id="three">sum</button>
+     <button id="fiv">sub</button>
+      <button id="six">mul</button>
+       <button id="seven">div</button>
+    
+    <br>
+    <input type="text" id="four">
+    <script>
+        $(document).ready(function(){
+        $("#three").click(function(){
+            a=parseInt($("#one").val())
+            b=parseInt($("#two").val())
+            c=a+b
+            $("#four").val(c)
+        })
+         
+        $("#fiv").click(function(){
+            a=parseInt($("#one").val())
+            b=parseInt($("#two").val())
+            c=a-b
+            $("#four").val(c)
+        })
+         
+        $("#six").click(function(){
+            a=parseInt($("#one").val())
+            b=parseInt($("#two").val())
+            c=a*b
+            $("#four").val(c)
+        })
+          
+        $("#seven").click(function(){
+            a=parseInt($("#one").val())
+            b=parseInt($("#two").val())
+            c=a/b
+            $("#four").val(c)
+        })
+        })
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

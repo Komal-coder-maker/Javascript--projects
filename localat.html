@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        div {
+            margin-top: 40px;
+            height: 320px;
+        }
+
+        button {
+            margin-bottom: 20px;
+        }
+
+      
+    table {
+    width: 100%;
+    margin-top: 30px;
+}
+
+th {
+    background-color: slateblue;
+    color: white;
+    text-align: center;
+    height: 40px;
+}
+
+td {
+    text-align: center;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container" style="border: 2px solid black">
+        <h1 style="text-align: center;">Registration Table...</h1>
+        <input type="text" class="form-control" id="textName" placeholder="Enter the name">
+        <br><br>
+        <input type="text" class="form-control" id="textPhone" placeholder="Enter the  phone number ">
+        <br><br>
+        <input type="text" class="form-control" id="textAddress" placeholder="Enter the address">
+        <br>
+        <button onclick="save()" class="btn btn-primary">Save Data</button>
+        <button onclick="show()" class="btn btn-success">Show Data</button>
+    </div>
+    <table class="table-bordered table-hover">
+        <thead>
+            <th>Name</th>
+            <th>Phone no.</th>
+            <th>Address</th>
+        </thead>
+        <tbody id="bdy"></tbody>
+    </table>
+</body>
+<script>
+    show()
+ var arr=[]
+ 
+    function show() {
+        document.getElementById("bdy").innerHTML = ""
+       
+        arr = JSON.parse(localStorage.getItem("first"))
+        if(arr==null){
+            arr=[]
+        }
+        i = 0
+        while (i <= arr.length - 1) {
+            var row = document.createElement("tr")
+            var cell1 = document.createElement("td")
+            var cell2 = document.createElement("td")
+            var cell3 = document.createElement("td")
+            cell1.innerHTML = arr[i].name
+            cell2.innerHTML = arr[i].phone
+            cell3.innerHTML = arr[i].address
+            row.append(cell1)
+            row.append(cell2)
+            row.append(cell3)
+            document.getElementById("bdy").append(row)
+            i++
+
+        }
+    }
+    
+    function save() {
+        arr = JSON.parse(localStorage.getItem("first"))
+        if (arr == null) {
+            arr = []
+        } var name = document.getElementById("textName").value
+        var phone = document.getElementById("textPhone").value
+        var address = document.getElementById("textAddress").value
+        arr.push({ name, phone, address })
+        localStorage.setItem("first", JSON.stringify(arr))
+        show()
+    }
+</script>
+
+</html>

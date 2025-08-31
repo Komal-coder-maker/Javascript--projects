@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="bdy">
+    <input type="text" id="color" placeholder="Enter the Color">  <button onclick="add()">add</button>
+    <br><br>
+    <input type="number" id="num" placeholder="enter the height">
+    <br><br>
+    <select id="sel" > 
+        <option >red</option>
+         <option>green</option>
+          <option >pink</option>
+           <option>cyan</option>
+    </select>
+    <button onclick="create()">create</button>
+    <br><br>
+</body>
+<script>
+    function add(){
+        var x= document.getElementById("color").value
+        var y= document.createElement("option")
+        y.innerHTML=x
+        document.getElementById("sel").append(y)
+    }
+    function create(){
+        var box= document.createElement("div")
+        // var clr= document.getElementById("color").value
+        // var h= document.getElementById("num").value
+        var select= document.getElementById("sel").value  // select pr onchange bhi lga skteh h 
+        
+        box.style.height= "100px";
+        box.style.width="100px"
+        box.style.border="1px solid black"
+        box.style.backgroundColor=select
+        box.style.float="left"
+        box.style.margin="10px  "
+        document.getElementById("bdy").append(box)
+         }
+</script>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        th,td{
+            text-align: center;
+        }
+        th{
+            background-color: purple;;
+            color:white
+        }
+    </style>
+</head>
+<body>
+   <div class="container"> 
+   <center> <h1>Registration Table...</h1></center>
+    <input  class="form-control"type="text" id="textName" placeholder="Enter The Name">
+    <br>
+    <input type="text" class="form-control" id="textPhone" placeholder="Enter The Phone Number">
+    <br>
+    <input type="text" class="form-control" id="textAddress" placeholder="Enter The Address">
+    <br>
+    <button  class="btn btn-success"onclick="save()">Save</button>
+    <button  class="btn btn-primary"onclick="show()">Show Data</button>
+    <br></div>
+    <table class="table table-bordered"><thead>
+        <th>Name</th>
+        <th>Phone Number</th> 
+            <th>Address</th>
+        </thead>
+        <tbody id="bdy"></tbody>
+    
+</table>
+    <script>
+        show()
+        var arrName=[]
+        var arrPhone=[]
+        var arrAddress=[]
+
+
+        function show(){
+            document.getElementById("bdy").innerHTML=""
+            arrName= JSON.parse(localStorage.getItem("first"))
+            arrPhone= JSON.parse(localStorage.getItem("second"))
+            arrAddress= JSON.parse(localStorage.getItem("third"))
+
+            i=0
+            while(i<=arrName.length-1){
+                var row= document.createElement("tr")
+                var cell1 = document.createElement("td")
+                var cell2= document.createElement("td")
+                 var cell3 = document.createElement("td")
+
+                 cell1.innerHTML=arrName[i]
+                 cell2.innerHTML=arrPhone[i]
+                 cell3.innerHTML=arrAddress[i]
+
+                 row.append(cell1)
+                 row.append(cell2)
+                 row.append(cell3)
+                 document.getElementById("bdy").append(row)
+                 i++
+
+            }
+        }
+        function save(){
+            
+              arrName=JSON.parse(localStorage.getItem("first"))
+             arrPhone=JSON.parse(localStorage.getItem("second"))
+             arrAddress=JSON.parse(localStorage.getItem("third"))
+             if(arrName==null){
+                arrName=[]
+                arrPhone=[]
+                arrAddress=[]
+             }
+            var name=document.getElementById("textName").value
+            var phone=document.getElementById("textPhone").value
+            var address=document.getElementById("textAddress").value
+            arrName.push(name)
+             arrPhone.push(phone)
+              arrAddress.push(address)
+              localStorage.setItem("first",JSON.stringify(arrName))
+              localStorage.setItem("second",JSON.stringify(arrPhone))
+              localStorage.setItem("third",JSON.stringify(arrAddress))
+              show()
+
+        }
+ 
+    </script>
+</body>
+</html>

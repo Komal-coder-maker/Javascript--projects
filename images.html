@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img
+        {
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body id="bdy">
+    <input onchange="set(this)" type="file">  
+    <button onclick="show()">Print</button>
+    <br>
+    
+     <!-- <img src="" id="image1" alt=""> -->
+      <!-- base 64 string -->
+       <script>  
+
+       var arrStorage=[]
+       function show()
+       {
+            // window.print()
+            arrStorage= JSON.parse(localStorage.getItem("Record"))
+            arrStorage.forEach(function(base64){
+                image=document.createElement("img")
+                image.src=base64
+                document.getElementById("bdy").append(image)
+            })
+
+       }
+        function set(current)
+        {
+             
+           arrStorage= JSON.parse(localStorage.getItem("Record"))
+           if(arrStorage==null)
+           {
+            arrStorage=[]
+           }
+            var file=current.files[0]
+            var name=file.name
+           
+
+                var reader=new FileReader() // object
+                reader.readAsDataURL(file)
+                reader.onload=function(){
+                     arrStorage.push(reader.result)
+                     localStorage.setItem("Record",JSON.stringify(arrStorage))    
+                }
+          
+        }
+       </script>
+</body>
+</html>

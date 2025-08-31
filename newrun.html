@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Filter</title>
+  <style>
+    .box {
+      height: 280px;
+      width: 27%;
+      border: 2px solid black;
+      margin: 15px;
+      float: left;
+    }
+    .box img {
+      height: 80%;
+      width: 100%;
+    }
+    .box span {
+      font-size: 20px;
+      margin-left: 10px;
+    }
+    #products {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <center>
+    <button onclick="iphone()">iPhone</button>
+    <button onclick="samsung()">Samsung</button>
+    <button onclick="oppo()">Oppo</button>
+    <button onclick="redmi()">Redmi</button>
+    <button onclick="all()">All</button>
+  </center>
+
+  <div id="products"></div>
+
+  <script>
+    let arr = [
+      { Name: "iphone", price: 80000, path: "iphon1.jpg" },
+      { Name: "Redmi", price: 20000, path: "redmi1.jpg" },
+      { Name: "Oppo", price: 10000, path: "opppo2.jpg" },
+      { Name: "iphone", price: 60000, path: "iphone2.jpg" },
+      { Name: "Samsung", price: 70000, path: "samsung2.jpg" },
+      { Name: "Redmi", price: 60000, path: "redmi2.jpg" }
+    ];
+
+    function show(filteredArray) {
+      document.getElementById("products").innerHTML = "";
+
+      filteredArray.forEach(function (item) {
+        let box = document.createElement("div");
+        box.className = "box";
+
+        let img = document.createElement("img");
+        img.src = item.path;
+
+        let name = document.createElement("span");
+        name.innerHTML = item.Name;
+
+        let price = document.createElement("span");
+        price.innerHTML = " ₹" + item.price;
+
+        box.append(img, name, price);
+        document.getElementById("products").appendChild(box);
+      });
+    }
+
+    function iphone() {
+      let result = arr.filter(function (item) {
+        return item.Name === "iphone";
+      });
+      show(result);
+    }
+
+    function samsung() {
+      let result = arr.filter(function (item) {
+        return item.Name === "Samsung";
+      });
+      show(result);
+    }
+
+    function oppo() {
+      let result = arr.filter(function (item) {
+        return item.Name === "Oppo";
+      });
+      show(result);
+    }
+
+    function redmi() {
+      let result = arr.filter(function (item) {
+        return item.Name === "Redmi";
+      });
+      show(result);
+    }
+
+    function all() {
+      show(arr);
+    }
+
+    // pehle se sab dikhaye
+    all ();
+  </script>
+</body>
+</html>

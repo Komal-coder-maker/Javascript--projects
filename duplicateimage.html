@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="bdy">
+    <input type="file" onchange="set()" id="text">
+    <button onclick="show()">show</button>
+<br><br>
+    <script>
+
+        
+        let arr=[]
+        function show(){
+            arr=JSON.parse(localStorage.getItem("record"))
+            arr.forEach(function(val){
+                let image=document.createElement("img")
+                image.style.height="100px"
+                image.style.width="100px"
+                image.src=val
+                document.getElementById("bdy").append(image)
+            })
+
+        }
+        function set(){
+
+            arr=JSON.parse(localStorage.getItem("record"))
+            if(arr==null){
+                arr=[]
+            }
+            let val= document.getElementById("text")
+            var file=val.files[0]
+            var reader=new FileReader()
+            reader.readAsDataURL(file)
+            reader.onload=function(){
+               arr.push(reader.result)
+               localStorage.setItem("record",JSON.stringify(arr))
+            }
+        }
+    </script>
+    
+</body>
+</html>

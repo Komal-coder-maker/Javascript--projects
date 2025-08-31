@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        #first{
+            /* width: 50%; */
+            /* background-color: red; */
+            margin-top: 70px;
+            margin-left: 10px;
+            text-align: center;
+        }
+        h1{
+            position:absolute;
+            margin-left: 480px;
+            font-size: 40px;
+            color: white;
+        }
+        button{
+            margin-left: 20px;
+            border: none;
+            height: 30px;
+            width: 10%;
+            background-color: skyblue;
+        }
+        input{
+            border: none;
+            border-radius: 20px;
+            /* box-shadow: 1px 2px 5px skyblue; */
+            height: 30px;
+            width: 16%;
+            padding-left: 20px;
+            font-size: 14px;
+background: linear-gradient(to right,purple, orange);        }
+    </style>
+</head>
+<body>
+    <h1>Movie Search API</h1><br>
+   <form action="" id="first">
+    <input type="text" placeholder="Enter the movie name ">
+        <button>Serach</button>
+   </form>
+    <div id="second"></div>
+<script>
+    let text= document.getElementById("first")
+    let sec=document.getElementById("second")
+    text.addEventListener('submit', function(e){
+        e.preventDefault()
+        let query =text.querySelector("input").value
+        console.log(query)
+        movie(query); // ✅ यही line add करो बस!
+    })
+
+    async function movie(query){
+        const reu= await fetch(`https://api.tvmaze.com/search/shows?q=${query}`)
+        const res= await reu.json();
+        make(res)
+    }
+
+   function make(movies){
+    sec.innerHTML = ""; // पहले के पुराने images को हटाने के लिए
+    movies.forEach(function(movie) {
+        
+        if (movie.show.image) { // ✅ check added
+            let img = document.createElement("img");
+            img.src = movie.show.image.medium;
+            img.style.height = "250px";
+            img.style.margin = "50px";
+            sec.append(img);
+        }
+    });
+}
+
+    
+</script>
+
+</body>
+</html>

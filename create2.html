@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="bdy">
+<button onclick="create()">create</button>
+<br><br>
+</body>
+<script>
+   function create(){
+     var box= document.createElement("div")
+    box.style.height="100px"
+    box.style.width="100px"
+    box.style.float="left"
+    box.style.border="1px solid black"
+     var box= document.createElement("div")
+    box.style.height="120px"
+    box.style.width="120px"
+    box.style.float="left"
+    box.style.border="1px solid black"
+    box.style.margin="10px 10px 10px "
+    document.getElementById("bdy").append(box)
+   
+    var x= parseInt(Math.random()*256)
+    var y= parseInt(Math.random()*256)
+    var z= parseInt(Math.random()*256)
+
+    var innerbox=document.createElement("div")
+    innerbox.style.height="20px"
+     innerbox.style.width="100%"
+     innerbox.style.backgroundColor=(`rgb(${x},${y},${z})`)
+     box.append(innerbox)
+
+     var image1=document.createElement("img")
+     image1.src="plus.png"
+     image1.style.height="100%"
+     image1.setAttribute("onclick","create()")
+     innerbox.append(image1)
+     
+
+
+     var image2=document.createElement("img")
+     image2.src="del.png"
+     image2.style.float="right"
+     image2.style.height="100%"
+     image2.setAttribute("onclick","del(this)")
+     innerbox.append(image2)
+   }
+   function del(current){
+    var curr= current.parentNode
+    // var curr1=curr.parentNode
+    curr.style.display="none"
+
+
+   }
+</script>
+</html>

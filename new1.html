@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Phone Filter</title>
+</head>
+<body>
+
+  <!-- Buttons -->
+  <center>
+    <button onclick="showPhones('iphone')">iPhone</button>
+    <button onclick="showPhones('Samsung')">Samsung</button>
+    <button onclick="showPhones('Oppo')">Oppo</button>
+    <button onclick="showPhones('Redmi')">Redmi</button>
+    <button onclick="showPhones('All')">All</button>
+  </center>
+
+  <!-- ✅ Yahan sirf phones dikhenge -->
+  <div id="phones-box"></div>
+
+  <script>
+    // 📦 All phones
+    let phones = [
+      { brand: "iphone", price: 80000, image: "iphon1.jpg" },
+      { brand: "Samsung", price: 70000, image: "samsung2.jpg" },
+      { brand: "Oppo", price: 10000, image: "opppo2.jpg" },
+      { brand: "Redmi", price: 20000, image: "redmi1.jpg" },
+      { brand: "iphone", price: 90000, image: "iphone3.jpg" },
+      { brand: "Samsung", price: 60000, image: "samsung4.jpg" }
+    ];
+
+    // 📂 Show phones of selected brand
+    function showPhones(brandName) {
+      // ✅ Sirf phones wale div ko clear karo
+      document.getElementById("phones-box").innerHTML = "";
+
+      // Agar All bola, toh sab phones lo, warna filter karo
+      let selectedPhones = [];
+
+      if (brandName === "All") {
+        selectedPhones = phones;
+      } else {
+        selectedPhones = phones.filter(function(phone) {
+          return phone.brand === brandName;
+        });
+      }
+
+      // Har phone ko ek box mein dikhao
+      selectedPhones.forEach(function(phone) {
+        let box = document.createElement("div");
+        box.style.border = "1px solid black";
+        box.style.margin = "10px";
+        box.style.padding = "10px";
+        box.style.width = "200px";
+        box.style.float = "left";
+
+        let img = document.createElement("img");
+        img.src = phone.image;
+        img.style.width = "100%";
+        img.style.height = "150px";
+
+        let name = document.createElement("h3");
+        name.innerText = phone.brand;
+
+        let price = document.createElement("p");
+        price.innerText = "Rs. " + phone.price;
+
+        box.append(img);
+        box.append(name);
+        box.append(price);
+
+        // ✅ Sirf phones-box mein daalo
+        document.getElementById("phones-box").append(box);
+      });
+    }
+
+    // 🔃 Page start hote hi sab phone dikhao
+    showPhones('All');
+  </script>
+
+</body>
+</html>

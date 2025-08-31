@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img
+        {
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body id="bdy">
+    <input onchange="set(this)" type="file">  
+    <button onclick="show()">Print</button>
+    <br>
+    
+     <!-- <img src="" id="image1" alt=""> -->
+      <!-- base 64 string -->
+       <script>  
+       
+       function show()
+       {
+        
+       }
+        function set(current)
+        {
+            var file=current.files[0]
+            
+            
+                var reader=new FileReader()
+                reader.readAsDataURL(file)
+                reader.onload=function(){
+                    var image=document.createElement("img")
+                    image.src=reader.result
+                    document.getElementById("bdy").append(image)
+                }
+          
+        }
+ 
+    
+    </script>
+</body>
+</html>
