@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Music Player</title>
+  <style>
+    body {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      font-family: sans-serif;
+      margin-top: 100px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎵 Online Music Test Player</h2>
+
+  <!-- Audio with online source -->
+  <audio id="mySong" src="https://arch2.bitso.pro/g/zip/8J4IhdaY3dRkA324EcGm4Nv4/file.zip"></audio>
+
+  <button onclick="playPause()">▶️ Play </button>
+
+  <script>
+    let song = document.getElementById("mySong");
+
+    function playPause() {
+      if (song.paused) {
+        song.play();
+      } else {
+        song.pause();
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,132 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tic Tac Toe Game</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Wireless Headphones</title>
   <style>
-    body {
-      background: linear-gradient(to right, #dff9fb, #f6e58d);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      padding: 40px;
     }
 
-    h2 {
-      margin-bottom: 20px;
-      font-size: 36px;
-      color: #2d3436;
+    body {
+      background: #f9f9f9;
+      color: #333;
     }
 
-    #board {
-      display: grid;
-      grid-template-columns: repeat(3, 100px);
-      grid-template-rows: repeat(3, 100px);
-      gap: 10px;
-      justify-content: center;
-      margin: 30px auto;
-    }
-
-    .cell {
-      background-color: white;
-      font-size: 36px;
-      font-weight: bold;
+    header {
+      background-color: #111;
+      padding: 20px 40px;
+      color: white;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      border: 3px solid #2d3436;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      flex-wrap: wrap;
     }
 
-    .cell:hover {
-      background-color: #ffeaa7;
-      transform: scale(1.05);
-    }
-
-    #status {
-      font-size: 22px;
+    header .logo {
+      font-size: 1.5rem;
       font-weight: bold;
-      margin-top: 20px;
-      color: #6c5ce7;
     }
 
-    button {
-      margin-top: 20px;
-      font-size: 18px;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #f0a500;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 50px;
+      background: linear-gradient(135deg, #ffe259, #ffa751);
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      max-width: 500px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .hero button {
+      background-color: #222;
+      color: white;
       padding: 10px 20px;
-      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .hero button:hover {
+      background-color: #444;
+    }
+
+    .hero img {
+      max-width: 400px;
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .features {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 20px;
+      width: 200px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    .gallery {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .gallery .images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .buy-section {
+      background: #f0a500;
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .buy-section button {
+      background-color: white;
+      color: #f0a500;
+      padding: 10px 25px;
+      border: none;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .buy-section button:hover {
+      background-color: #fff7d6;
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav ul {
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h2>🏆 Tic Tac Toe - Player vs Player</h2>
+  <header>
+    <div class="logo">SoundPro</div>
+    <nav>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#buy">Buy Now</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div id="board">
-    <div class="cell" onclick="makeMove(this)"></div>
-    <div class="cell" onclick="makeMove(this)"></div>
-    <div class="cell" onclick="makeMove(this)"></div>
-    <div class="cell" onclick="makeMove(this)"></div>
-    <div class="cell" onclick="makeMove(this)"></div>
-    <div class="cell" onclick="makeMove(this)"></div>
-    <div class="cell" onclick="makeMove(this)"></div>
-    <div class="cell" onclick="makeMove(this)"></div>
-    <div class="cell" onclick="makeMove(this)"></div>
-  </div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Smart Wireless Headphones</h1>
+      <p>Experience immersive sound with noise cancellation.</p>
+      <button onclick="scrollToBuy()">Buy Now</button>
+    </div>
+    <img src="https://source.unsplash.com/500x500/?headphones" alt="Product Image">
+  </section>
 
-  <div id="status">Current Turn: ❌ (X)</div>
-  <button class="btn btn-success" onclick="resetGame()">🔄 Reset Game</button>
+  <section id="features" class="features">
+    <h2>Why Choose Us?</h2>
+    <div class="feature-grid">
+      <div class="feature-card">🎧 HD Sound Quality</div>
+      <div class="feature-card">🔋 30 Hours Battery</div>
+      <div class="feature-card">🎙️ Built-in Microphone</div>
+      <div class="feature-card">🌐 Bluetooth 5.0</div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <h2>Gallery</h2>
+    <div class="images">
+      <img src="https://source.unsplash.com/300x300/?headphones,1" alt="Headphones 1">
+      <img src="https://source.unsplash.com/300x300/?headphones,2" alt="Headphones 2">
+      <img src="https://source.unsplash.com/300x300/?headphones,3" alt="Headphones 3">
+    </div>
+  </section>
+
+  <section id="buy" class="buy-section">
+    <h2>Buy Now</h2>
+    <p>Just ₹2999 - Limited Time Offer!</p>
+    <button>Order Now</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 SoundPro. All rights reserved.</p>
+  </footer>
 
   <script>
-    let currentPlayer = "X";
-    let gameOver = false;
-
-    function makeMove(cell) {
-      if (cell.innerText === "" && !gameOver) {
-        cell.innerText = currentPlayer;
-        if (checkWinner()) {
-          document.getElementById("status").innerText = "🎉 Player " + currentPlayer + " Wins!";
-          gameOver = true;
-        } else if (isDraw()) {
-          document.getElementById("status").innerText = "😐 It's a Draw!";
-          gameOver = true;
-        } else {
-          currentPlayer = currentPlayer === "X" ? "O" : "X";
-          document.getElementById("status").innerText = "Current Turn: " + (currentPlayer === "X" ? "❌ (X)" : "⭕ (O)");
-        }
-      }
-    }
-
-    function checkWinner() {
-      const cells = document.querySelectorAll(".cell");
-      const combos = [
-        [0,1,2], [3,4,5], [6,7,8],
-        [0,3,6], [1,4,7], [2,5,8],
-        [0,4,8], [2,4,6]
-      ];
-
-      return combos.some(combo => {
-        const [a, b, c] = combo;
-        return cells[a].innerText &&
-               cells[a].innerText === cells[b].innerText &&
-               cells[a].innerText === cells[c].innerText;
-      });
-    }
-
-    function isDraw() {
-      const cells = document.querySelectorAll(".cell");
-      return [...cells].every(cell => cell.innerText !== "");
-    }
-
-    function resetGame() {
-      const cells = document.querySelectorAll(".cell");
-      cells.forEach(cell => cell.innerText = "");
-      currentPlayer = "X";
-      gameOver = false;
-      document.getElementById("status").innerText = "Current Turn: ❌ (X)";
+    function scrollToBuy() {
+      const buySection = document.getElementById("buy");
+      buySection.scrollIntoView({ behavior: "smooth" });
     }
   </script>
 

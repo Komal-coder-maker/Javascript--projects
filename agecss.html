@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      height: 100vh;
+      background: linear-gradient(120deg, #f6d365, #fda085);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .card {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 100%;
+      max-width: 450px;
+    }
+    input {
+      width: 100%;
+      height: 40px;
+      padding: 5px;
+      margin-top: 15px;
+      border: 2px solid black;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      background-color: black;
+      color: white;
+      border: 2px solid darkcyan;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    p {
+      font-size: 20px;
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h3>Age Calculator...</h3>
+    <input type="date" id="first">
+    <br>
+    <button onclick="set()">Click Here</button>
+    <br>
+    <p id="result">Age::</p>
+  </div>
+
+  <script>
+    function set(){
+        let x = new Date(document.getElementById("first").value)
+        let y = new Date();
+
+        let a = y.getFullYear() - x.getFullYear()
+
+        if (y < new Date(y.getFullYear(), x.getMonth(), x.getDate())) a--;
+
+        document.getElementById("result").innerHTML = a
+    }
+  </script>
+
+</body>
+</html>

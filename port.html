@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    div {
+      background-color: black;
+      color: white;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    ul {
+      display: flex;
+      list-style: none;
+    }
+
+    li {
+      margin-right: 20px;
+      font-size: 20px;
+    }
+
+    li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    main {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h2 {
+      font-size: 35px;
+    }
+
+    h3 {
+      padding-top: 20px;
+      color: gray;
+    }
+
+    section {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    p {
+      padding-top: 10px;
+      font-size: 20px;
+    }
+
+    h4 {
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    header {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    h5 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      margin-top: 80px;
+      color: black;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    input,
+    textarea {
+      height: 20px;
+      width: 50%;
+      margin-top: 10px;
+    }
+
+    textarea {
+      height: 60px;
+    }
+
+    button {
+      width: 50%;
+      background-color: black;
+      color: white;
+      height: 40px;
+      margin-top: 10px;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #333;
+      color: white;
+    }
+
+    div.dark-mode {
+      background-color: #222;
+    }
+
+    footer.dark-mode {
+      background-color: #444;
+      color: white;
+    }
+
+    button.dark-mode {
+      background-color: white;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>My Portfolio</h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skill">Skills</a></li>
+      <li><a href="#contact">Contact Me</a></li>
+    </ul>
+  </div>
+
+  <!-- ID added here for Home -->
+  <main id="home">
+    <h2>Hello, I'm a Web Developer</h2>
+    <h3>Welcome to my responsive portfolio website</h3>
+  </main>
+
+  <!-- ID added here for Projects -->
+  <section id="projects">
+    <h4>Projects</h4>
+    <p>✔ To - Do App</p>
+    <p>✔ Calculator</p>
+    <p>✔ Quiz App</p>
+  </section>
+
+  <header id="skill">
+    <h5>Skills</h5>
+    <p>💡HTML | CSS | JAVASCRIPT</p>
+    <!-- Toggle Button for Dark/Light Mode -->
+    <button id="mode-toggle" onclick="set()">Toggle Dark/Light Mode</button>
+  </header>
+
+  <footer id="contact">
+    Contact Me
+    <br>
+    <input type="text" placeholder="Your Name"><br>
+    <input type="text" placeholder="Your Email"><br>
+    <textarea placeholder="Your Message"></textarea><br>
+    <button>Send</button>
+  </footer>
+
+  <script>
+    // Function to toggle dark mode
+    function set() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+
+</html>

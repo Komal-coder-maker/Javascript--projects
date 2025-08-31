@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <style>
+    body{
+        height: 100vh;
+        background-color: darkgoldenrod;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    div{
+        height: 350px;
+        width: 40%;
+        background-color: black;
+        box-shadow: 2px 2px 2px 2px yellow;
+        border: 2px white;
+        text-align: center;
+        color: white;
+        font-size: 30px;
+        padding-top:10px
+    }
+    input{
+        width: 50%;
+        height: 27px;
+        margin-top:20px;
+        border: 2px solid black;
+    }
+    button{
+        margin-top: 20px;
+        background-color: black;
+        color: white;
+        border: 2px solid darkcyan;
+        margin-right: 30px;
+    }
+    p{
+        margin-right: 70px;
+    }
+ </style>
+</head>
+<body>
+    <div>Age Calculator...
+        <br>
+        <input type="date" id="first">
+        <br>
+        <button onclick="set()">Click Here</button>
+        <br>
+        <p id="result">Age::</p>
+    </div>
+
+    <script>
+        function set(){
+            let x = new Date(document.getElementById("first").value)
+            let y = new Date();
+
+            let a= y.getFullYear()-x.getFullYear()
+
+            if (y < new Date(y.getFullYear(),x.getMonth(),x.getDate()))a--;
+
+
+
+           document.getElementById("result").innerHTML=a
+        }
+    </script>
+    
+</body>
+</html>
